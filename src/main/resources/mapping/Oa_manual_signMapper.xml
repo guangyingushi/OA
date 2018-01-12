@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.dao.Oa_manual_signMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.entity.Oa_manual_sign" >
+    <id column="oms_id" property="omsId" jdbcType="INTEGER" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="oms_start_time" property="omsStartTime" jdbcType="TIMESTAMP" />
+    <result column="oms_end_time" property="omsEndTime" jdbcType="TIMESTAMP" />
+    <result column="oms_state" property="omsState" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    oms_id, u_id, oms_start_time, oms_end_time, oms_state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_manual_sign
+    where oms_id = #{omsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_manual_sign
+    where oms_id = #{omsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.entity.Oa_manual_sign" >
+    insert into oa_manual_sign (oms_id, u_id, oms_start_time, 
+      oms_end_time, oms_state)
+    values (#{omsId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{omsStartTime,jdbcType=TIMESTAMP}, 
+      #{omsEndTime,jdbcType=TIMESTAMP}, #{omsState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.entity.Oa_manual_sign" >
+    insert into oa_manual_sign
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="omsId != null" >
+        oms_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="omsStartTime != null" >
+        oms_start_time,
+      </if>
+      <if test="omsEndTime != null" >
+        oms_end_time,
+      </if>
+      <if test="omsState != null" >
+        oms_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="omsId != null" >
+        #{omsId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="omsStartTime != null" >
+        #{omsStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="omsEndTime != null" >
+        #{omsEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="omsState != null" >
+        #{omsState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Oa_manual_sign" >
+    update oa_manual_sign
+    <set >
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="omsStartTime != null" >
+        oms_start_time = #{omsStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="omsEndTime != null" >
+        oms_end_time = #{omsEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="omsState != null" >
+        oms_state = #{omsState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oms_id = #{omsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Oa_manual_sign" >
+    update oa_manual_sign
+    set u_id = #{uId,jdbcType=INTEGER},
+      oms_start_time = #{omsStartTime,jdbcType=TIMESTAMP},
+      oms_end_time = #{omsEndTime,jdbcType=TIMESTAMP},
+      oms_state = #{omsState,jdbcType=VARCHAR}
+    where oms_id = #{omsId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.dao.ProfessionalMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.entity.Professional" >
+    <id column="Professional_id" property="professionalId" jdbcType="INTEGER" />
+    <result column="Professional_name" property="professionalName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Professional_id, Professional_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from professional
+    where Professional_id = #{professionalId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from professional
+    where Professional_id = #{professionalId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.entity.Professional" >
+    insert into professional (Professional_id, Professional_name)
+    values (#{professionalId,jdbcType=INTEGER}, #{professionalName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.entity.Professional" >
+    insert into professional
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="professionalId != null" >
+        Professional_id,
+      </if>
+      <if test="professionalName != null" >
+        Professional_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="professionalId != null" >
+        #{professionalId,jdbcType=INTEGER},
+      </if>
+      <if test="professionalName != null" >
+        #{professionalName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Professional" >
+    update professional
+    <set >
+      <if test="professionalName != null" >
+        Professional_name = #{professionalName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Professional_id = #{professionalId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Professional" >
+    update professional
+    set Professional_name = #{professionalName,jdbcType=VARCHAR}
+    where Professional_id = #{professionalId,jdbcType=INTEGER}
+  </update>
+</mapper>

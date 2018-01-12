@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.dao.Msg_infoMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.entity.Msg_info" >
+    <id column="msg_id" property="msgId" jdbcType="INTEGER" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="msg_title" property="msgTitle" jdbcType="VARCHAR" />
+    <result column="msg_content" property="msgContent" jdbcType="VARCHAR" />
+    <result column="msg_file" property="msgFile" jdbcType="VARCHAR" />
+    <result column="msg_state" property="msgState" jdbcType="VARCHAR" />
+    <result column="msg_sendto_u_id" property="msgSendtoUId" jdbcType="INTEGER" />
+    <result column="msg_create_time" property="msgCreateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    msg_id, u_id, msg_title, msg_content, msg_file, msg_state, msg_sendto_u_id, msg_create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from msg_info
+    where msg_id = #{msgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from msg_info
+    where msg_id = #{msgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.entity.Msg_info" >
+    insert into msg_info (msg_id, u_id, msg_title, 
+      msg_content, msg_file, msg_state, 
+      msg_sendto_u_id, msg_create_time)
+    values (#{msgId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{msgTitle,jdbcType=VARCHAR}, 
+      #{msgContent,jdbcType=VARCHAR}, #{msgFile,jdbcType=VARCHAR}, #{msgState,jdbcType=VARCHAR}, 
+      #{msgSendtoUId,jdbcType=INTEGER}, #{msgCreateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.entity.Msg_info" >
+    insert into msg_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="msgId != null" >
+        msg_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="msgTitle != null" >
+        msg_title,
+      </if>
+      <if test="msgContent != null" >
+        msg_content,
+      </if>
+      <if test="msgFile != null" >
+        msg_file,
+      </if>
+      <if test="msgState != null" >
+        msg_state,
+      </if>
+      <if test="msgSendtoUId != null" >
+        msg_sendto_u_id,
+      </if>
+      <if test="msgCreateTime != null" >
+        msg_create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="msgId != null" >
+        #{msgId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="msgTitle != null" >
+        #{msgTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="msgContent != null" >
+        #{msgContent,jdbcType=VARCHAR},
+      </if>
+      <if test="msgFile != null" >
+        #{msgFile,jdbcType=VARCHAR},
+      </if>
+      <if test="msgState != null" >
+        #{msgState,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSendtoUId != null" >
+        #{msgSendtoUId,jdbcType=INTEGER},
+      </if>
+      <if test="msgCreateTime != null" >
+        #{msgCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Msg_info" >
+    update msg_info
+    <set >
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="msgTitle != null" >
+        msg_title = #{msgTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="msgContent != null" >
+        msg_content = #{msgContent,jdbcType=VARCHAR},
+      </if>
+      <if test="msgFile != null" >
+        msg_file = #{msgFile,jdbcType=VARCHAR},
+      </if>
+      <if test="msgState != null" >
+        msg_state = #{msgState,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSendtoUId != null" >
+        msg_sendto_u_id = #{msgSendtoUId,jdbcType=INTEGER},
+      </if>
+      <if test="msgCreateTime != null" >
+        msg_create_time = #{msgCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where msg_id = #{msgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Msg_info" >
+    update msg_info
+    set u_id = #{uId,jdbcType=INTEGER},
+      msg_title = #{msgTitle,jdbcType=VARCHAR},
+      msg_content = #{msgContent,jdbcType=VARCHAR},
+      msg_file = #{msgFile,jdbcType=VARCHAR},
+      msg_state = #{msgState,jdbcType=VARCHAR},
+      msg_sendto_u_id = #{msgSendtoUId,jdbcType=INTEGER},
+      msg_create_time = #{msgCreateTime,jdbcType=TIMESTAMP}
+    where msg_id = #{msgId,jdbcType=INTEGER}
+  </update>
+</mapper>

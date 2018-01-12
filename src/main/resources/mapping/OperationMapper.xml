@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.dao.OperationMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.entity.Operation" >
+    <id column="operation_id" property="operationId" jdbcType="INTEGER" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="operation_even" property="operationEven" jdbcType="VARCHAR" />
+    <result column="operation_time" property="operationTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    operation_id, u_id, operation_even, operation_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from operation
+    where operation_id = #{operationId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from operation
+    where operation_id = #{operationId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.entity.Operation" >
+    insert into operation (operation_id, u_id, operation_even, 
+      operation_time)
+    values (#{operationId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{operationEven,jdbcType=VARCHAR}, 
+      #{operationTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.entity.Operation" >
+    insert into operation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="operationId != null" >
+        operation_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="operationEven != null" >
+        operation_even,
+      </if>
+      <if test="operationTime != null" >
+        operation_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="operationId != null" >
+        #{operationId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="operationEven != null" >
+        #{operationEven,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null" >
+        #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Operation" >
+    update operation
+    <set >
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="operationEven != null" >
+        operation_even = #{operationEven,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null" >
+        operation_time = #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where operation_id = #{operationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Operation" >
+    update operation
+    set u_id = #{uId,jdbcType=INTEGER},
+      operation_even = #{operationEven,jdbcType=VARCHAR},
+      operation_time = #{operationTime,jdbcType=TIMESTAMP}
+    where operation_id = #{operationId,jdbcType=INTEGER}
+  </update>
+</mapper>

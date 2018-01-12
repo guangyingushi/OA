@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.dao.Result_applyMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.entity.Result_apply" >
+    <id column="r_a_id" property="rAId" jdbcType="INTEGER" />
+    <result column="a_id" property="aId" jdbcType="INTEGER" />
+    <result column="r__a_deal_user" property="rADealUser" jdbcType="INTEGER" />
+    <result column="r_a_result" property="rAResult" jdbcType="VARCHAR" />
+    <result column="r_a_opinion" property="rAOpinion" jdbcType="VARCHAR" />
+    <result column="r_a_deal_time" property="rADealTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    r_a_id, a_id, r__a_deal_user, r_a_result, r_a_opinion, r_a_deal_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from result_apply
+    where r_a_id = #{rAId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from result_apply
+    where r_a_id = #{rAId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.entity.Result_apply" >
+    insert into result_apply (r_a_id, a_id, r__a_deal_user, 
+      r_a_result, r_a_opinion, r_a_deal_time
+      )
+    values (#{rAId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER}, #{rADealUser,jdbcType=INTEGER}, 
+      #{rAResult,jdbcType=VARCHAR}, #{rAOpinion,jdbcType=VARCHAR}, #{rADealTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.entity.Result_apply" >
+    insert into result_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rAId != null" >
+        r_a_id,
+      </if>
+      <if test="aId != null" >
+        a_id,
+      </if>
+      <if test="rADealUser != null" >
+        r__a_deal_user,
+      </if>
+      <if test="rAResult != null" >
+        r_a_result,
+      </if>
+      <if test="rAOpinion != null" >
+        r_a_opinion,
+      </if>
+      <if test="rADealTime != null" >
+        r_a_deal_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rAId != null" >
+        #{rAId,jdbcType=INTEGER},
+      </if>
+      <if test="aId != null" >
+        #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="rADealUser != null" >
+        #{rADealUser,jdbcType=INTEGER},
+      </if>
+      <if test="rAResult != null" >
+        #{rAResult,jdbcType=VARCHAR},
+      </if>
+      <if test="rAOpinion != null" >
+        #{rAOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="rADealTime != null" >
+        #{rADealTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Result_apply" >
+    update result_apply
+    <set >
+      <if test="aId != null" >
+        a_id = #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="rADealUser != null" >
+        r__a_deal_user = #{rADealUser,jdbcType=INTEGER},
+      </if>
+      <if test="rAResult != null" >
+        r_a_result = #{rAResult,jdbcType=VARCHAR},
+      </if>
+      <if test="rAOpinion != null" >
+        r_a_opinion = #{rAOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="rADealTime != null" >
+        r_a_deal_time = #{rADealTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where r_a_id = #{rAId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Result_apply" >
+    update result_apply
+    set a_id = #{aId,jdbcType=INTEGER},
+      r__a_deal_user = #{rADealUser,jdbcType=INTEGER},
+      r_a_result = #{rAResult,jdbcType=VARCHAR},
+      r_a_opinion = #{rAOpinion,jdbcType=VARCHAR},
+      r_a_deal_time = #{rADealTime,jdbcType=TIMESTAMP}
+    where r_a_id = #{rAId,jdbcType=INTEGER}
+  </update>
+</mapper>

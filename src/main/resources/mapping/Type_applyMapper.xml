@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.dao.Type_applyMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.entity.Type_apply" >
+    <id column="t_id" property="tId" jdbcType="INTEGER" />
+    <result column="t_name" property="tName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    t_id, t_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from type_apply
+    where t_id = #{tId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from type_apply
+    where t_id = #{tId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.entity.Type_apply" >
+    insert into type_apply (t_id, t_name)
+    values (#{tId,jdbcType=INTEGER}, #{tName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.entity.Type_apply" >
+    insert into type_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tId != null" >
+        t_id,
+      </if>
+      <if test="tName != null" >
+        t_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tId != null" >
+        #{tId,jdbcType=INTEGER},
+      </if>
+      <if test="tName != null" >
+        #{tName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Type_apply" >
+    update type_apply
+    <set >
+      <if test="tName != null" >
+        t_name = #{tName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where t_id = #{tId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Type_apply" >
+    update type_apply
+    set t_name = #{tName,jdbcType=VARCHAR}
+    where t_id = #{tId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.dao.Dispatch_applyMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.entity.Dispatch_apply" >
+    <id column="dispatch_apply_id" property="dispatchApplyId" jdbcType="INTEGER" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="dispatch_apply_p_id" property="dispatchApplyPId" jdbcType="INTEGER" />
+    <result column="dispatch_apply_even" property="dispatchApplyEven" jdbcType="INTEGER" />
+    <result column="dispatch_apply_time" property="dispatchApplyTime" jdbcType="TIMESTAMP" />
+    <result column="t_id" property="tId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dispatch_apply_id, u_id, dispatch_apply_p_id, dispatch_apply_even, dispatch_apply_time, 
+    t_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dispatch_apply
+    where dispatch_apply_id = #{dispatchApplyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dispatch_apply
+    where dispatch_apply_id = #{dispatchApplyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="main.java.com.entity.Dispatch_apply" >
+    insert into dispatch_apply (dispatch_apply_id, u_id, dispatch_apply_p_id, 
+      dispatch_apply_even, dispatch_apply_time, 
+      t_id)
+    values (#{dispatchApplyId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{dispatchApplyPId,jdbcType=INTEGER}, 
+      #{dispatchApplyEven,jdbcType=INTEGER}, #{dispatchApplyTime,jdbcType=TIMESTAMP}, 
+      #{tId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="main.java.com.entity.Dispatch_apply" >
+    insert into dispatch_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dispatchApplyId != null" >
+        dispatch_apply_id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="dispatchApplyPId != null" >
+        dispatch_apply_p_id,
+      </if>
+      <if test="dispatchApplyEven != null" >
+        dispatch_apply_even,
+      </if>
+      <if test="dispatchApplyTime != null" >
+        dispatch_apply_time,
+      </if>
+      <if test="tId != null" >
+        t_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dispatchApplyId != null" >
+        #{dispatchApplyId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="dispatchApplyPId != null" >
+        #{dispatchApplyPId,jdbcType=INTEGER},
+      </if>
+      <if test="dispatchApplyEven != null" >
+        #{dispatchApplyEven,jdbcType=INTEGER},
+      </if>
+      <if test="dispatchApplyTime != null" >
+        #{dispatchApplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tId != null" >
+        #{tId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Dispatch_apply" >
+    update dispatch_apply
+    <set >
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="dispatchApplyPId != null" >
+        dispatch_apply_p_id = #{dispatchApplyPId,jdbcType=INTEGER},
+      </if>
+      <if test="dispatchApplyEven != null" >
+        dispatch_apply_even = #{dispatchApplyEven,jdbcType=INTEGER},
+      </if>
+      <if test="dispatchApplyTime != null" >
+        dispatch_apply_time = #{dispatchApplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tId != null" >
+        t_id = #{tId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where dispatch_apply_id = #{dispatchApplyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Dispatch_apply" >
+    update dispatch_apply
+    set u_id = #{uId,jdbcType=INTEGER},
+      dispatch_apply_p_id = #{dispatchApplyPId,jdbcType=INTEGER},
+      dispatch_apply_even = #{dispatchApplyEven,jdbcType=INTEGER},
+      dispatch_apply_time = #{dispatchApplyTime,jdbcType=TIMESTAMP},
+      t_id = #{tId,jdbcType=INTEGER}
+    where dispatch_apply_id = #{dispatchApplyId,jdbcType=INTEGER}
+  </update>
+</mapper>
