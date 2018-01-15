@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.Msg_infoMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Msg_info" >
+<mapper namespace="com.dao.Msg_infoMapper" >
+  <resultMap id="BaseResultMap" type="Msg_info" >
     <id column="msg_id" property="msgId" jdbcType="INTEGER" />
     <result column="u_id" property="uId" jdbcType="INTEGER" />
     <result column="msg_title" property="msgTitle" jdbcType="VARCHAR" />
@@ -24,7 +24,7 @@
     delete from msg_info
     where msg_id = #{msgId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Msg_info" >
+  <insert id="insert" parameterType="Msg_info" >
     insert into msg_info (msg_id, u_id, msg_title, 
       msg_content, msg_file, msg_state, 
       msg_sendto_u_id, msg_create_time)
@@ -32,7 +32,7 @@
       #{msgContent,jdbcType=VARCHAR}, #{msgFile,jdbcType=VARCHAR}, #{msgState,jdbcType=VARCHAR}, 
       #{msgSendtoUId,jdbcType=INTEGER}, #{msgCreateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Msg_info" >
+  <insert id="insertSelective" parameterType="Msg_info" >
     insert into msg_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="msgId != null" >
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Msg_info" >
+  <update id="updateByPrimaryKeySelective" parameterType="Msg_info" >
     update msg_info
     <set >
       <if test="uId != null" >
@@ -114,7 +114,7 @@
     </set>
     where msg_id = #{msgId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Msg_info" >
+  <update id="updateByPrimaryKey" parameterType="Msg_info" >
     update msg_info
     set u_id = #{uId,jdbcType=INTEGER},
       msg_title = #{msgTitle,jdbcType=VARCHAR},

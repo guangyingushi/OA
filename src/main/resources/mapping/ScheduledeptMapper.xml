@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.ScheduledeptMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Scheduledept" >
+<mapper namespace="com.dao.ScheduledeptMapper" >
+  <resultMap id="BaseResultMap" type="Scheduledept" >
     <id column="scheduledept_id" property="scheduledeptId" jdbcType="INTEGER" />
     <result column="scheduledept_content" property="scheduledeptContent" jdbcType="VARCHAR" />
     <result column="scheduledept_start_time" property="scheduledeptStartTime" jdbcType="TIMESTAMP" />
@@ -24,7 +24,7 @@
     delete from scheduledept
     where scheduledept_id = #{scheduledeptId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Scheduledept" >
+  <insert id="insert" parameterType="Scheduledept" >
     insert into scheduledept (scheduledept_id, scheduledept_content, 
       scheduledept_start_time, scheduledept_end_time, 
       scheduledept_update_time, scheduledept_create_time, 
@@ -34,7 +34,7 @@
       #{scheduledeptUpdateTime,jdbcType=TIMESTAMP}, #{scheduledeptCreateTime,jdbcType=TIMESTAMP}, 
       #{dId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Scheduledept" >
+  <insert id="insertSelective" parameterType="Scheduledept" >
     insert into scheduledept
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="scheduledeptId != null" >
@@ -83,7 +83,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Scheduledept" >
+  <update id="updateByPrimaryKeySelective" parameterType="Scheduledept" >
     update scheduledept
     <set >
       <if test="scheduledeptContent != null" >
@@ -107,7 +107,7 @@
     </set>
     where scheduledept_id = #{scheduledeptId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Scheduledept" >
+  <update id="updateByPrimaryKey" parameterType="Scheduledept" >
     update scheduledept
     set scheduledept_content = #{scheduledeptContent,jdbcType=VARCHAR},
       scheduledept_start_time = #{scheduledeptStartTime,jdbcType=TIMESTAMP},

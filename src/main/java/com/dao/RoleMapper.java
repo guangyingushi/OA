@@ -1,5 +1,7 @@
 package com.dao;
 
+import java.util.List;
+
 import com.entity.Role;
 
 public interface RoleMapper {
@@ -14,4 +16,5 @@ public interface RoleMapper {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+ 
 }

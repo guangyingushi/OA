@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.ApplyMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Apply" >
+<mapper namespace="com.dao.ApplyMapper" >
+  <resultMap id="BaseResultMap" type="Apply" >
     <id column="a_id" property="aId" jdbcType="INTEGER" />
     <result column="a_type" property="aType" jdbcType="VARCHAR" />
     <result column="a_even" property="aEven" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
     delete from apply
     where a_id = #{aId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Apply" >
+  <insert id="insert" parameterType="Apply" >
     insert into apply (a_id, a_type, a_even, 
       a_leave_time, a_create_time, a_state, 
       u_id)
@@ -31,7 +31,7 @@
       #{aLeaveTime,jdbcType=VARCHAR}, #{aCreateTime,jdbcType=TIMESTAMP}, #{aState,jdbcType=VARCHAR}, 
       #{uId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Apply" >
+  <insert id="insertSelective" parameterType="Apply" >
     insert into apply
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="aId != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Apply" >
+  <update id="updateByPrimaryKeySelective" parameterType="Apply" >
     update apply
     <set >
       <if test="aType != null" >
@@ -104,7 +104,7 @@
     </set>
     where a_id = #{aId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Apply" >
+  <update id="updateByPrimaryKey" parameterType="Apply" >
     update apply
     set a_type = #{aType,jdbcType=VARCHAR},
       a_even = #{aEven,jdbcType=VARCHAR},

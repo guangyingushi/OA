@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.Role_permissionMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Role_permission" >
+<mapper namespace="com.dao.Role_permissionMapper" >
+  <resultMap id="BaseResultMap" type="Role_permission" >
     <id column="r_p_id" property="rPId" jdbcType="INTEGER" />
     <result column="r_id" property="rId" jdbcType="INTEGER" />
     <result column="permission_id" property="permissionId" jdbcType="INTEGER" />
@@ -19,13 +19,13 @@
     delete from role_permission
     where r_p_id = #{rPId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Role_permission" >
+  <insert id="insert" parameterType="Role_permission" >
     insert into role_permission (r_p_id, r_id, permission_id
       )
     values (#{rPId,jdbcType=INTEGER}, #{rId,jdbcType=INTEGER}, #{permissionId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Role_permission" >
+  <insert id="insertSelective" parameterType="Role_permission" >
     insert into role_permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="rPId != null" >
@@ -50,7 +50,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Role_permission" >
+  <update id="updateByPrimaryKeySelective" parameterType="Role_permission" >
     update role_permission
     <set >
       <if test="rId != null" >
@@ -62,7 +62,7 @@
     </set>
     where r_p_id = #{rPId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Role_permission" >
+  <update id="updateByPrimaryKey" parameterType="Role_permission" >
     update role_permission
     set r_id = #{rId,jdbcType=INTEGER},
       permission_id = #{permissionId,jdbcType=INTEGER}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.AnnouncementMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Announcement" >
+<mapper namespace="dao.AnnouncementMapper" >
+  <resultMap id="BaseResultMap" type="Announcement" >
     <id column="Announcement_id" property="announcementId" jdbcType="INTEGER" />
     <result column="Announcement_title" property="announcementTitle" jdbcType="VARCHAR" />
     <result column="Announcement_content" property="announcementContent" jdbcType="VARCHAR" />
@@ -21,7 +21,7 @@
     delete from announcement
     where Announcement_id = #{announcementId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Announcement" >
+  <insert id="insert" parameterType="Announcement" >
     insert into announcement (Announcement_id, Announcement_title, 
       Announcement_content, u_id, Announcement_create_time
       )
@@ -29,7 +29,7 @@
       #{announcementContent,jdbcType=VARCHAR}, #{uId,jdbcType=INTEGER}, #{announcementCreateTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Announcement" >
+  <insert id="insertSelective" parameterType="Announcement" >
     insert into announcement
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="announcementId != null" >
@@ -66,7 +66,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Announcement" >
+  <update id="updateByPrimaryKeySelective" parameterType="Announcement" >
     update announcement
     <set >
       <if test="announcementTitle != null" >
@@ -84,7 +84,7 @@
     </set>
     where Announcement_id = #{announcementId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Announcement" >
+  <update id="updateByPrimaryKey" parameterType="Announcement" >
     update announcement
     set Announcement_title = #{announcementTitle,jdbcType=VARCHAR},
       Announcement_content = #{announcementContent,jdbcType=VARCHAR},

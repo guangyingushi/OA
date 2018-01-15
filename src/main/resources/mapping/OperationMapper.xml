@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.OperationMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Operation" >
+<mapper namespace="com.dao.OperationMapper" >
+  <resultMap id="BaseResultMap" type="Operation" >
     <id column="operation_id" property="operationId" jdbcType="INTEGER" />
     <result column="u_id" property="uId" jdbcType="INTEGER" />
     <result column="operation_even" property="operationEven" jdbcType="VARCHAR" />
@@ -20,13 +20,13 @@
     delete from operation
     where operation_id = #{operationId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Operation" >
+  <insert id="insert" parameterType="Operation" >
     insert into operation (operation_id, u_id, operation_even, 
       operation_time)
     values (#{operationId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{operationEven,jdbcType=VARCHAR}, 
       #{operationTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Operation" >
+  <insert id="insertSelective" parameterType="Operation" >
     insert into operation
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="operationId != null" >
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Operation" >
+  <update id="updateByPrimaryKeySelective" parameterType="Operation" >
     update operation
     <set >
       <if test="uId != null" >
@@ -72,7 +72,7 @@
     </set>
     where operation_id = #{operationId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Operation" >
+  <update id="updateByPrimaryKey" parameterType="Operation" >
     update operation
     set u_id = #{uId,jdbcType=INTEGER},
       operation_even = #{operationEven,jdbcType=VARCHAR},

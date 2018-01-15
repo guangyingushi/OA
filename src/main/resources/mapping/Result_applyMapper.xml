@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.Result_applyMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Result_apply" >
+<mapper namespace="com.dao.Result_applyMapper" >
+  <resultMap id="BaseResultMap" type="Result_apply" >
     <id column="r_a_id" property="rAId" jdbcType="INTEGER" />
     <result column="a_id" property="aId" jdbcType="INTEGER" />
     <result column="r__a_deal_user" property="rADealUser" jdbcType="INTEGER" />
@@ -22,7 +22,7 @@
     delete from result_apply
     where r_a_id = #{rAId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Result_apply" >
+  <insert id="insert" parameterType="Result_apply" >
     insert into result_apply (r_a_id, a_id, r__a_deal_user, 
       r_a_result, r_a_opinion, r_a_deal_time
       )
@@ -30,7 +30,7 @@
       #{rAResult,jdbcType=VARCHAR}, #{rAOpinion,jdbcType=VARCHAR}, #{rADealTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Result_apply" >
+  <insert id="insertSelective" parameterType="Result_apply" >
     insert into result_apply
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="rAId != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Result_apply" >
+  <update id="updateByPrimaryKeySelective" parameterType="Result_apply" >
     update result_apply
     <set >
       <if test="aId != null" >
@@ -94,7 +94,7 @@
     </set>
     where r_a_id = #{rAId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Result_apply" >
+  <update id="updateByPrimaryKey" parameterType="Result_apply" >
     update result_apply
     set a_id = #{aId,jdbcType=INTEGER},
       r__a_deal_user = #{rADealUser,jdbcType=INTEGER},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.NoteMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Note" >
+<mapper namespace="com.dao.NoteMapper" >
+  <resultMap id="BaseResultMap" type="Note" >
     <id column="n_id" property="nId" jdbcType="INTEGER" />
     <result column="u_id" property="uId" jdbcType="INTEGER" />
     <result column="n_title" property="nTitle" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
     delete from note
     where n_id = #{nId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Note" >
+  <insert id="insert" parameterType="Note" >
     insert into note (n_id, u_id, n_title, 
       n_content, n_deal_time, n_update_time, 
       n_create_time)
@@ -31,7 +31,7 @@
       #{nContent,jdbcType=VARCHAR}, #{nDealTime,jdbcType=TIMESTAMP}, #{nUpdateTime,jdbcType=TIMESTAMP}, 
       #{nCreateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Note" >
+  <insert id="insertSelective" parameterType="Note" >
     insert into note
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="nId != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Note" >
+  <update id="updateByPrimaryKeySelective" parameterType="Note" >
     update note
     <set >
       <if test="uId != null" >
@@ -104,7 +104,7 @@
     </set>
     where n_id = #{nId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Note" >
+  <update id="updateByPrimaryKey" parameterType="Note" >
     update note
     set u_id = #{uId,jdbcType=INTEGER},
       n_title = #{nTitle,jdbcType=VARCHAR},

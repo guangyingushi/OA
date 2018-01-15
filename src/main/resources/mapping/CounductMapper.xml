@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.CounductMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Counduct" >
+<mapper namespace="com.dao.CounductMapper" >
+  <resultMap id="BaseResultMap" type="Counduct" >
     <id column="counduct_id" property="counductId" jdbcType="INTEGER" />
     <result column="counduct_type" property="counductType" jdbcType="VARCHAR" />
     <result column="counduct_title" property="counductTitle" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
     delete from counduct
     where counduct_id = #{counductId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Counduct" >
+  <insert id="insert" parameterType="Counduct" >
     insert into counduct (counduct_id, counduct_type, counduct_title, 
       counduct_content, counduct_create_time, 
       u_id)
@@ -31,7 +31,7 @@
       #{counductContent,jdbcType=VARCHAR}, #{counductCreateTime,jdbcType=TIMESTAMP}, 
       #{uId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Counduct" >
+  <insert id="insertSelective" parameterType="Counduct" >
     insert into counduct
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="counductId != null" >
@@ -74,7 +74,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Counduct" >
+  <update id="updateByPrimaryKeySelective" parameterType="Counduct" >
     update counduct
     <set >
       <if test="counductType != null" >
@@ -95,7 +95,7 @@
     </set>
     where counduct_id = #{counductId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Counduct" >
+  <update id="updateByPrimaryKey" parameterType="Counduct" >
     update counduct
     set counduct_type = #{counductType,jdbcType=VARCHAR},
       counduct_title = #{counductTitle,jdbcType=VARCHAR},

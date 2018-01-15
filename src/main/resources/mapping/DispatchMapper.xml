@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.DispatchMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Dispatch" >
+<mapper namespace="com.dao.DispatchMapper" >
+  <resultMap id="BaseResultMap" type="Dispatch" >
     <id column="dispatch_id" property="dispatchId" jdbcType="INTEGER" />
     <result column="u_id" property="uId" jdbcType="INTEGER" />
     <result column="dispatch_u_id" property="dispatchUId" jdbcType="INTEGER" />
@@ -22,7 +22,7 @@
     delete from dispatch
     where dispatch_id = #{dispatchId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Dispatch" >
+  <insert id="insert" parameterType="Dispatch" >
     insert into dispatch (dispatch_id, u_id, dispatch_u_id, 
       dispatch_create_time, p_id, dispatch_p_id
       )
@@ -30,7 +30,7 @@
       #{dispatchCreateTime,jdbcType=INTEGER}, #{pId,jdbcType=INTEGER}, #{dispatchPId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Dispatch" >
+  <insert id="insertSelective" parameterType="Dispatch" >
     insert into dispatch
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="dispatchId != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Dispatch" >
+  <update id="updateByPrimaryKeySelective" parameterType="Dispatch" >
     update dispatch
     <set >
       <if test="uId != null" >
@@ -94,7 +94,7 @@
     </set>
     where dispatch_id = #{dispatchId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Dispatch" >
+  <update id="updateByPrimaryKey" parameterType="Dispatch" >
     update dispatch
     set u_id = #{uId,jdbcType=INTEGER},
       dispatch_u_id = #{dispatchUId,jdbcType=INTEGER},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.Type_applyMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Type_apply" >
+<mapper namespace="com.dao.Type_applyMapper" >
+  <resultMap id="BaseResultMap" type="Type_apply" >
     <id column="t_id" property="tId" jdbcType="INTEGER" />
     <result column="t_name" property="tName" jdbcType="VARCHAR" />
   </resultMap>
@@ -18,11 +18,11 @@
     delete from type_apply
     where t_id = #{tId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Type_apply" >
+  <insert id="insert" parameterType="Type_apply" >
     insert into type_apply (t_id, t_name)
     values (#{tId,jdbcType=INTEGER}, #{tName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Type_apply" >
+  <insert id="insertSelective" parameterType="Type_apply" >
     insert into type_apply
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tId != null" >
@@ -41,7 +41,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Type_apply" >
+  <update id="updateByPrimaryKeySelective" parameterType="Type_apply" >
     update type_apply
     <set >
       <if test="tName != null" >
@@ -50,7 +50,7 @@
     </set>
     where t_id = #{tId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Type_apply" >
+  <update id="updateByPrimaryKey" parameterType="Type_apply" >
     update type_apply
     set t_name = #{tName,jdbcType=VARCHAR}
     where t_id = #{tId,jdbcType=INTEGER}

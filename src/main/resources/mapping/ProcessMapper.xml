@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.ProcessMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Process" >
+<mapper namespace="com.dao.ProcessMapper" >
+  <resultMap id="BaseResultMap" type="Process" >
     <id column="process_id" property="processId" jdbcType="INTEGER" />
     <result column="a_id" property="aId" jdbcType="INTEGER" />
     <result column="process_deal_u_id" property="processDealUId" jdbcType="INTEGER" />
@@ -21,13 +21,13 @@
     delete from process
     where process_id = #{processId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Process" >
+  <insert id="insert" parameterType="Process" >
     insert into process (process_id, a_id, process_deal_u_id, 
       process_next_u_id, process_state)
     values (#{processId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER}, #{processDealUId,jdbcType=INTEGER}, 
       #{processNextUId,jdbcType=INTEGER}, #{processState,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Process" >
+  <insert id="insertSelective" parameterType="Process" >
     insert into process
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="processId != null" >
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Process" >
+  <update id="updateByPrimaryKeySelective" parameterType="Process" >
     update process
     <set >
       <if test="aId != null" >
@@ -82,7 +82,7 @@
     </set>
     where process_id = #{processId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Process" >
+  <update id="updateByPrimaryKey" parameterType="Process" >
     update process
     set a_id = #{aId,jdbcType=INTEGER},
       process_deal_u_id = #{processDealUId,jdbcType=INTEGER},

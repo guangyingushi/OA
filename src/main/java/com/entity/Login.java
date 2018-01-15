@@ -7,7 +7,7 @@ public class Login {
 
     private String loginPassword;
 
-    private String uId;
+    private Integer uId;
 
     public Integer getLoginId() {
         return loginId;
@@ -33,11 +33,11 @@ public class Login {
         this.loginPassword = loginPassword == null ? null : loginPassword.trim();
     }
 
-    public String getuId() {
+    public Integer getuId() {
         return uId;
     }
 
-    public void setuId(String uId) {
-        this.uId = uId == null ? null : uId.trim();
+    public void setuId(Integer uId) {
+        this.uId = uId;
     }
 }

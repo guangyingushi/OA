@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.Oa_manual_signMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Oa_manual_sign" >
+<mapper namespace="com.dao.Oa_manual_signMapper" >
+  <resultMap id="BaseResultMap" type="Oa_manual_sign" >
     <id column="oms_id" property="omsId" jdbcType="INTEGER" />
     <result column="u_id" property="uId" jdbcType="INTEGER" />
     <result column="oms_start_time" property="omsStartTime" jdbcType="TIMESTAMP" />
@@ -21,13 +21,13 @@
     delete from oa_manual_sign
     where oms_id = #{omsId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Oa_manual_sign" >
+  <insert id="insert" parameterType="Oa_manual_sign" >
     insert into oa_manual_sign (oms_id, u_id, oms_start_time, 
       oms_end_time, oms_state)
     values (#{omsId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{omsStartTime,jdbcType=TIMESTAMP}, 
       #{omsEndTime,jdbcType=TIMESTAMP}, #{omsState,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Oa_manual_sign" >
+  <insert id="insertSelective" parameterType="Oa_manual_sign" >
     insert into oa_manual_sign
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="omsId != null" >
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Oa_manual_sign" >
+  <update id="updateByPrimaryKeySelective" parameterType="Oa_manual_sign" >
     update oa_manual_sign
     <set >
       <if test="uId != null" >
@@ -82,7 +82,7 @@
     </set>
     where oms_id = #{omsId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Oa_manual_sign" >
+  <update id="updateByPrimaryKey" parameterType="Oa_manual_sign" >
     update oa_manual_sign
     set u_id = #{uId,jdbcType=INTEGER},
       oms_start_time = #{omsStartTime,jdbcType=TIMESTAMP},

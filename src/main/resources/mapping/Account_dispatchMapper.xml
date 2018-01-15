@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.Account_dispatchMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Account_dispatch" >
+<mapper namespace="com.dao.Account_dispatchMapper" >
+  <resultMap id="BaseResultMap" type="Account_dispatch" >
     <id column="a_d_id" property="aDId" jdbcType="INTEGER" />
     <result column="u_id" property="uId" jdbcType="INTEGER" />
     <result column="c_d_id" property="cDId" jdbcType="INTEGER" />
@@ -23,7 +23,7 @@
     delete from account_dispatch
     where a_d_id = #{aDId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Account_dispatch" >
+  <insert id="insert" parameterType="Account_dispatch" >
     insert into account_dispatch (a_d_id, u_id, c_d_id, 
       a_d_price, a_d_explain, a_d_time, 
       t_id)
@@ -31,7 +31,7 @@
       #{aDPrice,jdbcType=DOUBLE}, #{aDExplain,jdbcType=VARCHAR}, #{aDTime,jdbcType=TIMESTAMP}, 
       #{tId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Account_dispatch" >
+  <insert id="insertSelective" parameterType="Account_dispatch" >
     insert into account_dispatch
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="aDId != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Account_dispatch" >
+  <update id="updateByPrimaryKeySelective" parameterType="Account_dispatch" >
     update account_dispatch
     <set >
       <if test="uId != null" >
@@ -104,7 +104,7 @@
     </set>
     where a_d_id = #{aDId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Account_dispatch" >
+  <update id="updateByPrimaryKey" parameterType="Account_dispatch" >
     update account_dispatch
     set u_id = #{uId,jdbcType=INTEGER},
       c_d_id = #{cDId,jdbcType=INTEGER},

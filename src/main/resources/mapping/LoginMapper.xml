@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.LoginMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Login" >
+<mapper namespace="com.dao.LoginMapper" >
+  <resultMap id="BaseResultMap" type="Login" >
     <id column="login_id" property="loginId" jdbcType="INTEGER" />
     <result column="login_usercode" property="loginUsercode" jdbcType="VARCHAR" />
     <result column="login_password" property="loginPassword" jdbcType="VARCHAR" />
-    <result column="u_id" property="uId" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     login_id, login_usercode, login_password, u_id
@@ -16,17 +16,25 @@
     from login
     where login_id = #{loginId,jdbcType=INTEGER}
   </select>
+  <!-- 添加通过loginUsercode查找Login -->
+  <select id="selectByloginUsercode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from login
+    where login_usercode = #{usercode,jdbcType=VARCHAR}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from login
     where login_id = #{loginId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Login" >
+  <insert id="insert" parameterType="Login" >
     insert into login (login_id, login_usercode, login_password, 
       u_id)
     values (#{loginId,jdbcType=INTEGER}, #{loginUsercode,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, 
-      #{uId,jdbcType=VARCHAR})
+      #{uId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Login" >
+  <insert id="insertSelective" parameterType="Login" >
     insert into login
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="loginId != null" >
@@ -53,11 +61,11 @@
         #{loginPassword,jdbcType=VARCHAR},
       </if>
       <if test="uId != null" >
-        #{uId,jdbcType=VARCHAR},
+        #{uId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Login" >
+  <update id="updateByPrimaryKeySelective" parameterType="Login" >
     update login
     <set >
       <if test="loginUsercode != null" >
@@ -67,16 +75,16 @@
         login_password = #{loginPassword,jdbcType=VARCHAR},
       </if>
       <if test="uId != null" >
-        u_id = #{uId,jdbcType=VARCHAR},
+        u_id = #{uId,jdbcType=INTEGER},
       </if>
     </set>
     where login_id = #{loginId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Login" >
+  <update id="updateByPrimaryKey" parameterType="Login" >
     update login
     set login_usercode = #{loginUsercode,jdbcType=VARCHAR},
       login_password = #{loginPassword,jdbcType=VARCHAR},
-      u_id = #{uId,jdbcType=VARCHAR}
+      u_id = #{uId,jdbcType=INTEGER}
     where login_id = #{loginId,jdbcType=INTEGER}
   </update>
 </mapper>

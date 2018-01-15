@@ -10,7 +10,8 @@ public interface LoginMapper {
     int insertSelective(Login record);
 
     Login selectByPrimaryKey(Integer loginId);
-
+     
+    Login selectByloginUsercode(String usercode);
     int updateByPrimaryKeySelective(Login record);
 
     int updateByPrimaryKey(Login record);

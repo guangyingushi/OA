@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.Dispatch_applyMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Dispatch_apply" >
+<mapper namespace="com.dao.Dispatch_applyMapper" >
+  <resultMap id="BaseResultMap" type="Dispatch_apply" >
     <id column="dispatch_apply_id" property="dispatchApplyId" jdbcType="INTEGER" />
     <result column="u_id" property="uId" jdbcType="INTEGER" />
     <result column="dispatch_apply_p_id" property="dispatchApplyPId" jdbcType="INTEGER" />
@@ -23,7 +23,7 @@
     delete from dispatch_apply
     where dispatch_apply_id = #{dispatchApplyId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Dispatch_apply" >
+  <insert id="insert" parameterType="Dispatch_apply" >
     insert into dispatch_apply (dispatch_apply_id, u_id, dispatch_apply_p_id, 
       dispatch_apply_even, dispatch_apply_time, 
       t_id)
@@ -31,7 +31,7 @@
       #{dispatchApplyEven,jdbcType=INTEGER}, #{dispatchApplyTime,jdbcType=TIMESTAMP}, 
       #{tId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Dispatch_apply" >
+  <insert id="insertSelective" parameterType="Dispatch_apply" >
     insert into dispatch_apply
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="dispatchApplyId != null" >
@@ -74,7 +74,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Dispatch_apply" >
+  <update id="updateByPrimaryKeySelective" parameterType="Dispatch_apply" >
     update dispatch_apply
     <set >
       <if test="uId != null" >
@@ -95,7 +95,7 @@
     </set>
     where dispatch_apply_id = #{dispatchApplyId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Dispatch_apply" >
+  <update id="updateByPrimaryKey" parameterType="Dispatch_apply" >
     update dispatch_apply
     set u_id = #{uId,jdbcType=INTEGER},
       dispatch_apply_p_id = #{dispatchApplyPId,jdbcType=INTEGER},

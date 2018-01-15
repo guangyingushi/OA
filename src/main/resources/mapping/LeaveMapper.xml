@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="main.java.com.dao.LeaveMapper" >
-  <resultMap id="BaseResultMap" type="main.java.com.entity.Leave" >
+<mapper namespace="com.dao.LeaveMapper" >
+  <resultMap id="BaseResultMap" type="Leave" >
     <id column="leave_id" property="leaveId" jdbcType="INTEGER" />
     <result column="u_id" property="uId" jdbcType="INTEGER" />
     <result column="leave_start_time" property="leaveStartTime" jdbcType="TIMESTAMP" />
@@ -22,7 +22,7 @@
     delete from leave
     where leave_id = #{leaveId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="main.java.com.entity.Leave" >
+  <insert id="insert" parameterType="Leave" >
     insert into leave (leave_id, u_id, leave_start_time, 
       leave_end_time, leave_content, t_id
       )
@@ -30,7 +30,7 @@
       #{leaveEndTime,jdbcType=TIMESTAMP}, #{leaveContent,jdbcType=VARCHAR}, #{tId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="main.java.com.entity.Leave" >
+  <insert id="insertSelective" parameterType="Leave" >
     insert into leave
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="leaveId != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.entity.Leave" >
+  <update id="updateByPrimaryKeySelective" parameterType="Leave" >
     update leave
     <set >
       <if test="uId != null" >
@@ -94,7 +94,7 @@
     </set>
     where leave_id = #{leaveId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="main.java.com.entity.Leave" >
+  <update id="updateByPrimaryKey" parameterType="Leave" >
     update leave
     set u_id = #{uId,jdbcType=INTEGER},
       leave_start_time = #{leaveStartTime,jdbcType=TIMESTAMP},
