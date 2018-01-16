@@ -51,22 +51,21 @@ public class ShiroConfig {
 	 *配置安全管理器
 	 */
 	@Bean
-	public SecurityManager securityManager(Realm realm){
+	public SecurityManager securityManager(Realm realm,CacheManager cacheManager){
 		DefaultWebSecurityManager defaultWebSecurityManager=new DefaultWebSecurityManager();
 		defaultWebSecurityManager.setRealm(realm);//设置域，桥梁属性
-		//defaultWebSecurityManager.setCacheManager(cacheManager);//缓存设置
-		return defaultWebSecurityManager;	
+		defaultWebSecurityManager.setCacheManager(cacheManager);//缓存设置
+		return defaultWebSecurityManager;
 	}
 	/**
 	 * 缓存设置
 	 * @return
 	 */
-/*	@Bean
-    public EhCacheManager ehCacheManager(){
+   	@Bean
+    public CacheManager cacheManager(){
         EhCacheManager cacheManager = new EhCacheManager();
-        cacheManager.setCacheManagerConfigFile("classpath:config/ehcache-shiro.xml");
         return cacheManager;
-    }*/
+    }
      
 	/**
 	 * realm設置
