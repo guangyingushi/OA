@@ -6,10 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="tologin" method="post">
-		账号：<input type="text" name="loginUsercode"><br />
-		密码：<input type="password" name="loginPassword"><br/> 
-		<input type="submit" value="登陸">
-	</form>
+      <h1>登陆成功</h1>
+      <h2><a href="logout">退出<a></a></h2>
 </body>
 </html>

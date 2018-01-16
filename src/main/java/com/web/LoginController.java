@@ -2,6 +2,9 @@ package com.web;
 
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +31,14 @@ public class LoginController {
 	/**
 	 * 用户登陆
 	 */
-	@RequestMapping("userlogin/{name}")
-	@ResponseBody
-	public Login userLogin(@PathVariable String name){
-       System.out.println("我触发了");
-	   Login login=loginService.login(name);
-	   return login;
+	@RequestMapping("tologin")
+	public String userLogin(String loginUsercode,String loginPassword){
+		UsernamePasswordToken usernamePasswordToken=new UsernamePasswordToken(loginUsercode,loginPassword);//把账户和密码存到令牌中
+		Subject currentUser=SecurityUtils.getSubject();
+		if(!currentUser.isAuthenticated()){
+			currentUser.login(usernamePasswordToken);//进行认证
+		}
+	    return "home";
 	}
 	
 	/**
@@ -56,6 +61,10 @@ public class LoginController {
 	   return role ;
 	 
 	}
+	/**
+	 * 去登陆
+	 * @return
+	 */
 	@RequestMapping("login.html")
 	public String toLogin(){
 		System.out.println("我触发了");

@@ -36,8 +36,8 @@ public class ShiroConfig {
 		//创建过滤器练的map参数对象
 		LinkedHashMap<String, String> filterChainDefinitionMap=new LinkedHashMap<>();
 	    filterChainDefinitionMap.put("/login.html", "anon"); //表示可以匿名访问
-        filterChainDefinitionMap.put("/loginUser", "anon"); 
-        filterChainDefinitionMap.put("/logout","anon");
+        filterChainDefinitionMap.put("/tologin", "anon"); 
+        filterChainDefinitionMap.put("/logout","logout");
         /*filterChainDefinitionMap.put("/jsp/error.jsp*","anon");
         filterChainDefinitionMap.put("/jsp/index.jsp*","authc");*/
         filterChainDefinitionMap.put("/*", "authc");//表示需要认证才可以访问
