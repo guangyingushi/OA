@@ -6,10 +6,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-       <form action="">
-                      賬號：<input type="text" name="loginUsercode" ><br/>
-                      密碼    <input type="password" name="loginPassword" ><br/>
-           <input type="submit" value="登陸">
-       </form>
+	<form action="">
+		账号：<input type="text" name="loginUsercode"><br /> 密码： <input
+			type="password" name="loginPassword"><br /> <input
+			type="submit" value="登陸">
+	</form>
 </body>
 </html>

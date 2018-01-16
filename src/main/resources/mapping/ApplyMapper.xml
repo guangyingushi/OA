@@ -1,117 +1,119 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.ApplyMapper" >
-  <resultMap id="BaseResultMap" type="Apply" >
-    <id column="a_id" property="aId" jdbcType="INTEGER" />
-    <result column="a_type" property="aType" jdbcType="VARCHAR" />
-    <result column="a_even" property="aEven" jdbcType="VARCHAR" />
-    <result column="a_leave_time" property="aLeaveTime" jdbcType="VARCHAR" />
-    <result column="a_create_time" property="aCreateTime" jdbcType="TIMESTAMP" />
-    <result column="a_state" property="aState" jdbcType="VARCHAR" />
-    <result column="u_id" property="uId" jdbcType="INTEGER" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    a_id, a_type, a_even, a_leave_time, a_create_time, a_state, u_id
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from apply
-    where a_id = #{aId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from apply
-    where a_id = #{aId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="Apply" >
-    insert into apply (a_id, a_type, a_even, 
-      a_leave_time, a_create_time, a_state, 
-      u_id)
-    values (#{aId,jdbcType=INTEGER}, #{aType,jdbcType=VARCHAR}, #{aEven,jdbcType=VARCHAR}, 
-      #{aLeaveTime,jdbcType=VARCHAR}, #{aCreateTime,jdbcType=TIMESTAMP}, #{aState,jdbcType=VARCHAR}, 
-      #{uId,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="Apply" >
-    insert into apply
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="aId != null" >
-        a_id,
-      </if>
-      <if test="aType != null" >
-        a_type,
-      </if>
-      <if test="aEven != null" >
-        a_even,
-      </if>
-      <if test="aLeaveTime != null" >
-        a_leave_time,
-      </if>
-      <if test="aCreateTime != null" >
-        a_create_time,
-      </if>
-      <if test="aState != null" >
-        a_state,
-      </if>
-      <if test="uId != null" >
-        u_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="aId != null" >
-        #{aId,jdbcType=INTEGER},
-      </if>
-      <if test="aType != null" >
-        #{aType,jdbcType=VARCHAR},
-      </if>
-      <if test="aEven != null" >
-        #{aEven,jdbcType=VARCHAR},
-      </if>
-      <if test="aLeaveTime != null" >
-        #{aLeaveTime,jdbcType=VARCHAR},
-      </if>
-      <if test="aCreateTime != null" >
-        #{aCreateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="aState != null" >
-        #{aState,jdbcType=VARCHAR},
-      </if>
-      <if test="uId != null" >
-        #{uId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="Apply" >
-    update apply
-    <set >
-      <if test="aType != null" >
-        a_type = #{aType,jdbcType=VARCHAR},
-      </if>
-      <if test="aEven != null" >
-        a_even = #{aEven,jdbcType=VARCHAR},
-      </if>
-      <if test="aLeaveTime != null" >
-        a_leave_time = #{aLeaveTime,jdbcType=VARCHAR},
-      </if>
-      <if test="aCreateTime != null" >
-        a_create_time = #{aCreateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="aState != null" >
-        a_state = #{aState,jdbcType=VARCHAR},
-      </if>
-      <if test="uId != null" >
-        u_id = #{uId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where a_id = #{aId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="Apply" >
-    update apply
-    set a_type = #{aType,jdbcType=VARCHAR},
-      a_even = #{aEven,jdbcType=VARCHAR},
-      a_leave_time = #{aLeaveTime,jdbcType=VARCHAR},
-      a_create_time = #{aCreateTime,jdbcType=TIMESTAMP},
-      a_state = #{aState,jdbcType=VARCHAR},
-      u_id = #{uId,jdbcType=INTEGER}
-    where a_id = #{aId,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.dao.ApplyMapper">
+	<resultMap id="BaseResultMap" type="Apply">
+		<id column="a_id" property="aId" jdbcType="INTEGER" />
+		<result column="a_type" property="aType" jdbcType="VARCHAR" />
+		<result column="a_even" property="aEven" jdbcType="VARCHAR" />
+		<result column="a_leave_time" property="aLeaveTime" jdbcType="VARCHAR" />
+		<result column="a_create_time" property="aCreateTime" jdbcType="TIMESTAMP" />
+		<result column="a_state" property="aState" jdbcType="VARCHAR" />
+		<result column="u_id" property="uId" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		a_id, a_type, a_even, a_leave_time, a_create_time, a_state, u_id
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from apply
+		where a_id = #{aId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from apply
+		where a_id = #{aId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="Apply">
+		insert into apply (a_id, a_type, a_even,
+		a_leave_time, a_create_time, a_state,
+		u_id)
+		values (#{aId,jdbcType=INTEGER}, #{aType,jdbcType=VARCHAR},
+		#{aEven,jdbcType=VARCHAR},
+		#{aLeaveTime,jdbcType=VARCHAR}, #{aCreateTime,jdbcType=TIMESTAMP}, #{aState,jdbcType=VARCHAR},
+		#{uId,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="Apply">
+		insert into apply
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="aId != null">
+				a_id,
+			</if>
+			<if test="aType != null">
+				a_type,
+			</if>
+			<if test="aEven != null">
+				a_even,
+			</if>
+			<if test="aLeaveTime != null">
+				a_leave_time,
+			</if>
+			<if test="aCreateTime != null">
+				a_create_time,
+			</if>
+			<if test="aState != null">
+				a_state,
+			</if>
+			<if test="uId != null">
+				u_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="aId != null">
+				#{aId,jdbcType=INTEGER},
+			</if>
+			<if test="aType != null">
+				#{aType,jdbcType=VARCHAR},
+			</if>
+			<if test="aEven != null">
+				#{aEven,jdbcType=VARCHAR},
+			</if>
+			<if test="aLeaveTime != null">
+				#{aLeaveTime,jdbcType=VARCHAR},
+			</if>
+			<if test="aCreateTime != null">
+				#{aCreateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="aState != null">
+				#{aState,jdbcType=VARCHAR},
+			</if>
+			<if test="uId != null">
+				#{uId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="Apply">
+		update apply
+		<set>
+			<if test="aType != null">
+				a_type = #{aType,jdbcType=VARCHAR},
+			</if>
+			<if test="aEven != null">
+				a_even = #{aEven,jdbcType=VARCHAR},
+			</if>
+			<if test="aLeaveTime != null">
+				a_leave_time = #{aLeaveTime,jdbcType=VARCHAR},
+			</if>
+			<if test="aCreateTime != null">
+				a_create_time = #{aCreateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="aState != null">
+				a_state = #{aState,jdbcType=VARCHAR},
+			</if>
+			<if test="uId != null">
+				u_id = #{uId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where a_id = #{aId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="Apply">
+		update apply
+		set a_type = #{aType,jdbcType=VARCHAR},
+		a_even = #{aEven,jdbcType=VARCHAR},
+		a_leave_time = #{aLeaveTime,jdbcType=VARCHAR},
+		a_create_time = #{aCreateTime,jdbcType=TIMESTAMP},
+		a_state = #{aState,jdbcType=VARCHAR},
+		u_id = #{uId,jdbcType=INTEGER}
+		where a_id = #{aId,jdbcType=INTEGER}
+	</update>
 </mapper>

@@ -21,7 +21,7 @@ import org.apache.shiro.realm.Realm;
  * @author Administrator
  *
  */
-
+@Configuration
 public class ShiroConfig {
     
 	/**

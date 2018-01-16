@@ -1,93 +1,97 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.ThelogMapper" >
-  <resultMap id="BaseResultMap" type="Thelog" >
-    <id column="thelog_id" property="thelogId" jdbcType="INTEGER" />
-    <result column="u_id" property="uId" jdbcType="INTEGER" />
-    <result column="thelog_login_time" property="thelogLoginTime" jdbcType="TIMESTAMP" />
-    <result column="thelog_out_time" property="thelogOutTime" jdbcType="TIMESTAMP" />
-    <result column="thelog_ip" property="thelogIp" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    thelog_id, u_id, thelog_login_time, thelog_out_time, thelog_ip
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from thelog
-    where thelog_id = #{thelogId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from thelog
-    where thelog_id = #{thelogId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="Thelog" >
-    insert into thelog (thelog_id, u_id, thelog_login_time, 
-      thelog_out_time, thelog_ip)
-    values (#{thelogId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{thelogLoginTime,jdbcType=TIMESTAMP}, 
-      #{thelogOutTime,jdbcType=TIMESTAMP}, #{thelogIp,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="Thelog" >
-    insert into thelog
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="thelogId != null" >
-        thelog_id,
-      </if>
-      <if test="uId != null" >
-        u_id,
-      </if>
-      <if test="thelogLoginTime != null" >
-        thelog_login_time,
-      </if>
-      <if test="thelogOutTime != null" >
-        thelog_out_time,
-      </if>
-      <if test="thelogIp != null" >
-        thelog_ip,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="thelogId != null" >
-        #{thelogId,jdbcType=INTEGER},
-      </if>
-      <if test="uId != null" >
-        #{uId,jdbcType=INTEGER},
-      </if>
-      <if test="thelogLoginTime != null" >
-        #{thelogLoginTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="thelogOutTime != null" >
-        #{thelogOutTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="thelogIp != null" >
-        #{thelogIp,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="Thelog" >
-    update thelog
-    <set >
-      <if test="uId != null" >
-        u_id = #{uId,jdbcType=INTEGER},
-      </if>
-      <if test="thelogLoginTime != null" >
-        thelog_login_time = #{thelogLoginTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="thelogOutTime != null" >
-        thelog_out_time = #{thelogOutTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="thelogIp != null" >
-        thelog_ip = #{thelogIp,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where thelog_id = #{thelogId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="Thelog" >
-    update thelog
-    set u_id = #{uId,jdbcType=INTEGER},
-      thelog_login_time = #{thelogLoginTime,jdbcType=TIMESTAMP},
-      thelog_out_time = #{thelogOutTime,jdbcType=TIMESTAMP},
-      thelog_ip = #{thelogIp,jdbcType=VARCHAR}
-    where thelog_id = #{thelogId,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.dao.ThelogMapper">
+	<resultMap id="BaseResultMap" type="Thelog">
+		<id column="thelog_id" property="thelogId" jdbcType="INTEGER" />
+		<result column="u_id" property="uId" jdbcType="INTEGER" />
+		<result column="thelog_login_time" property="thelogLoginTime"
+			jdbcType="TIMESTAMP" />
+		<result column="thelog_out_time" property="thelogOutTime"
+			jdbcType="TIMESTAMP" />
+		<result column="thelog_ip" property="thelogIp" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		thelog_id, u_id, thelog_login_time, thelog_out_time, thelog_ip
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from thelog
+		where thelog_id = #{thelogId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from thelog
+		where thelog_id = #{thelogId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="Thelog">
+		insert into thelog (thelog_id, u_id, thelog_login_time,
+		thelog_out_time, thelog_ip)
+		values (#{thelogId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER},
+		#{thelogLoginTime,jdbcType=TIMESTAMP},
+		#{thelogOutTime,jdbcType=TIMESTAMP}, #{thelogIp,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="Thelog">
+		insert into thelog
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="thelogId != null">
+				thelog_id,
+			</if>
+			<if test="uId != null">
+				u_id,
+			</if>
+			<if test="thelogLoginTime != null">
+				thelog_login_time,
+			</if>
+			<if test="thelogOutTime != null">
+				thelog_out_time,
+			</if>
+			<if test="thelogIp != null">
+				thelog_ip,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="thelogId != null">
+				#{thelogId,jdbcType=INTEGER},
+			</if>
+			<if test="uId != null">
+				#{uId,jdbcType=INTEGER},
+			</if>
+			<if test="thelogLoginTime != null">
+				#{thelogLoginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="thelogOutTime != null">
+				#{thelogOutTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="thelogIp != null">
+				#{thelogIp,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="Thelog">
+		update thelog
+		<set>
+			<if test="uId != null">
+				u_id = #{uId,jdbcType=INTEGER},
+			</if>
+			<if test="thelogLoginTime != null">
+				thelog_login_time = #{thelogLoginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="thelogOutTime != null">
+				thelog_out_time = #{thelogOutTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="thelogIp != null">
+				thelog_ip = #{thelogIp,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where thelog_id = #{thelogId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="Thelog">
+		update thelog
+		set u_id = #{uId,jdbcType=INTEGER},
+		thelog_login_time = #{thelogLoginTime,jdbcType=TIMESTAMP},
+		thelog_out_time = #{thelogOutTime,jdbcType=TIMESTAMP},
+		thelog_ip = #{thelogIp,jdbcType=VARCHAR}
+		where thelog_id = #{thelogId,jdbcType=INTEGER}
+	</update>
 </mapper>

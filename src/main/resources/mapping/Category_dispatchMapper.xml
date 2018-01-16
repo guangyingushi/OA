@@ -1,58 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.Category_dispatchMapper" >
-  <resultMap id="BaseResultMap" type="Category_dispatch" >
-    <id column="c_d_id" property="cDId" jdbcType="INTEGER" />
-    <result column="c_d_name" property="cDName" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    c_d_id, c_d_name
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from category_dispatch
-    where c_d_id = #{cDId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from category_dispatch
-    where c_d_id = #{cDId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="Category_dispatch" >
-    insert into category_dispatch (c_d_id, c_d_name)
-    values (#{cDId,jdbcType=INTEGER}, #{cDName,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="Category_dispatch" >
-    insert into category_dispatch
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="cDId != null" >
-        c_d_id,
-      </if>
-      <if test="cDName != null" >
-        c_d_name,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="cDId != null" >
-        #{cDId,jdbcType=INTEGER},
-      </if>
-      <if test="cDName != null" >
-        #{cDName,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="Category_dispatch" >
-    update category_dispatch
-    <set >
-      <if test="cDName != null" >
-        c_d_name = #{cDName,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where c_d_id = #{cDId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="Category_dispatch" >
-    update category_dispatch
-    set c_d_name = #{cDName,jdbcType=VARCHAR}
-    where c_d_id = #{cDId,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.dao.Category_dispatchMapper">
+	<resultMap id="BaseResultMap" type="Category_dispatch">
+		<id column="c_d_id" property="cDId" jdbcType="INTEGER" />
+		<result column="c_d_name" property="cDName" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		c_d_id, c_d_name
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from category_dispatch
+		where c_d_id = #{cDId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from category_dispatch
+		where c_d_id = #{cDId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="Category_dispatch">
+		insert into category_dispatch (c_d_id, c_d_name)
+		values (#{cDId,jdbcType=INTEGER}, #{cDName,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="Category_dispatch">
+		insert into category_dispatch
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cDId != null">
+				c_d_id,
+			</if>
+			<if test="cDName != null">
+				c_d_name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="cDId != null">
+				#{cDId,jdbcType=INTEGER},
+			</if>
+			<if test="cDName != null">
+				#{cDName,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="Category_dispatch">
+		update category_dispatch
+		<set>
+			<if test="cDName != null">
+				c_d_name = #{cDName,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where c_d_id = #{cDId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="Category_dispatch">
+		update category_dispatch
+		set c_d_name = #{cDName,jdbcType=VARCHAR}
+		where c_d_id = #{cDId,jdbcType=INTEGER}
+	</update>
 </mapper>

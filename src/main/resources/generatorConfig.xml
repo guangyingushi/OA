@@ -1,61 +1,80 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration
-        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-<generatorConfiguration>
-    数据库驱动:选择你的本地硬盘上面的数据库驱动包
-    <classPathEntry  location="D:\repository\repository\mysql\mysql-connector-java\5.1.6\mysql-connector-java-5.1.6.jar"/>
-    <context id="DB2Tables"  targetRuntime="MyBatis3">
-        <commentGenerator>
-            <property name="suppressDate" value="true"/>
-            是否去除自动生成的注释 true：是 ： false:否
-            <property name="suppressAllComments" value="true"/>
-        </commentGenerator>
-        数据库链接URL，用户名、密码
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/oasuject" userId="root" password="root">
-        </jdbcConnection>
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
-        </javaTypeResolver>
-        生成模型的包名和位置
-        <javaModelGenerator targetPackage="main.java.com.entity" targetProject="src">
-            <property name="enableSubPackages" value="true"/>
-            <property name="trimStrings" value="true"/>
-        </javaModelGenerator>
-        生成映射文件的包名和位置
-        <sqlMapGenerator targetPackage="main.resources.mapping" targetProject="src">
-            <property name="enableSubPackages" value="true"/>
-        </sqlMapGenerator>
-        生成DAO的包名和位置
-        <javaClientGenerator type="XMLMAPPER" targetPackage="main.java.com.dao" targetProject="src">
-            <property name="enableSubPackages" value="true"/>
-        </javaClientGenerator>
-        要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名
-        <table tableName="user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="account_dispatch" domainObjectName="Account_dispatch" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="announcement" domainObjectName="Announcement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="apply" domainObjectName="Apply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="category_dispatch" domainObjectName="Category_dispatch" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="counduct" domainObjectName="Counduct" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="dispatch" domainObjectName="Dispatch" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="dispatch_apply" domainObjectName="Dispatch_apply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="leave" domainObjectName="Leave" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="login" domainObjectName="Login" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="msg_info" domainObjectName="Msg_info" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="note" domainObjectName="Note" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="oa_manual_sign" domainObjectName="Oa_manual_sign" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="operation" domainObjectName="Operation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="permission" domainObjectName="Permission" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="process" domainObjectName="Process" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="professional" domainObjectName="Professional" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="result_apply" domainObjectName="Result_apply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="role" domainObjectName="Role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="role_permission" domainObjectName="Role_permission" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="scheduledept" domainObjectName="Scheduledept" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="scheduleemployees" domainObjectName="Scheduleemployees" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="thelog" domainObjectName="Thelog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="type_apply" domainObjectName="Type_apply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> </table>
-               <table tableName="user_role" domainObjectName="User_role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">   
-       </table>
-    </context>
-</generatorConfiguration> -->
+<!-- <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE generatorConfiguration 
+	PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"> 
+	<generatorConfiguration> 数据库驱动:选择你的本地硬盘上面的数据库驱动包 <classPathEntry location="D:\repository\repository\mysql\mysql-connector-java\5.1.6\mysql-connector-java-5.1.6.jar"/> 
+	<context id="DB2Tables" targetRuntime="MyBatis3"> <commentGenerator> <property 
+	name="suppressDate" value="true"/> 是否去除自动生成的注释 true：是 ： false:否 <property 
+	name="suppressAllComments" value="true"/> </commentGenerator> 数据库链接URL，用户名、密码 
+	<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/oasuject" 
+	userId="root" password="root"> </jdbcConnection> <javaTypeResolver> <property 
+	name="forceBigDecimals" value="false"/> </javaTypeResolver> 生成模型的包名和位置 <javaModelGenerator 
+	targetPackage="main.java.com.entity" targetProject="src"> <property name="enableSubPackages" 
+	value="true"/> <property name="trimStrings" value="true"/> </javaModelGenerator> 
+	生成映射文件的包名和位置 <sqlMapGenerator targetPackage="main.resources.mapping" targetProject="src"> 
+	<property name="enableSubPackages" value="true"/> </sqlMapGenerator> 生成DAO的包名和位置 
+	<javaClientGenerator type="XMLMAPPER" targetPackage="main.java.com.dao" targetProject="src"> 
+	<property name="enableSubPackages" value="true"/> </javaClientGenerator> 
+	要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 <table tableName="user" 
+	domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" 
+	enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> 
+	</table> <table tableName="account_dispatch" domainObjectName="Account_dispatch" 
+	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+	enableSelectByExample="false" selectByExampleQueryId="false"> </table> <table 
+	tableName="announcement" domainObjectName="Announcement" enableCountByExample="false" 
+	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+	selectByExampleQueryId="false"> </table> <table tableName="apply" domainObjectName="Apply" 
+	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+	enableSelectByExample="false" selectByExampleQueryId="false"> </table> <table 
+	tableName="category_dispatch" domainObjectName="Category_dispatch" enableCountByExample="false" 
+	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+	selectByExampleQueryId="false"> </table> <table tableName="counduct" domainObjectName="Counduct" 
+	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+	enableSelectByExample="false" selectByExampleQueryId="false"> </table> <table 
+	tableName="dispatch" domainObjectName="Dispatch" enableCountByExample="false" 
+	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+	selectByExampleQueryId="false"> </table> <table tableName="dispatch_apply" 
+	domainObjectName="Dispatch_apply" enableCountByExample="false" enableUpdateByExample="false" 
+	enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> 
+	</table> <table tableName="leave" domainObjectName="Leave" enableCountByExample="false" 
+	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+	selectByExampleQueryId="false"> </table> <table tableName="login" domainObjectName="Login" 
+	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+	enableSelectByExample="false" selectByExampleQueryId="false"> </table> <table 
+	tableName="msg_info" domainObjectName="Msg_info" enableCountByExample="false" 
+	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+	selectByExampleQueryId="false"> </table> <table tableName="note" domainObjectName="Note" 
+	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+	enableSelectByExample="false" selectByExampleQueryId="false"> </table> <table 
+	tableName="oa_manual_sign" domainObjectName="Oa_manual_sign" enableCountByExample="false" 
+	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+	selectByExampleQueryId="false"> </table> <table tableName="operation" domainObjectName="Operation" 
+	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+	enableSelectByExample="false" selectByExampleQueryId="false"> </table> <table 
+	tableName="permission" domainObjectName="Permission" enableCountByExample="false" 
+	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+	selectByExampleQueryId="false"> </table> <table tableName="process" domainObjectName="Process" 
+	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+	enableSelectByExample="false" selectByExampleQueryId="false"> </table> <table 
+	tableName="professional" domainObjectName="Professional" enableCountByExample="false" 
+	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+	selectByExampleQueryId="false"> </table> <table tableName="result_apply" 
+	domainObjectName="Result_apply" enableCountByExample="false" enableUpdateByExample="false" 
+	enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> 
+	</table> <table tableName="role" domainObjectName="Role" enableCountByExample="false" 
+	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+	selectByExampleQueryId="false"> </table> <table tableName="role_permission" 
+	domainObjectName="Role_permission" enableCountByExample="false" enableUpdateByExample="false" 
+	enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"> 
+	</table> <table tableName="scheduledept" domainObjectName="Scheduledept" 
+	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+	enableSelectByExample="false" selectByExampleQueryId="false"> </table> <table 
+	tableName="scheduleemployees" domainObjectName="Scheduleemployees" enableCountByExample="false" 
+	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+	selectByExampleQueryId="false"> </table> <table tableName="thelog" domainObjectName="Thelog" 
+	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+	enableSelectByExample="false" selectByExampleQueryId="false"> </table> <table 
+	tableName="type_apply" domainObjectName="Type_apply" enableCountByExample="false" 
+	enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+	selectByExampleQueryId="false"> </table> <table tableName="user_role" domainObjectName="User_role" 
+	enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+	enableSelectByExample="false" selectByExampleQueryId="false"> </table> </context> 
+	</generatorConfiguration> -->

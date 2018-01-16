@@ -1,93 +1,98 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.ProcessMapper" >
-  <resultMap id="BaseResultMap" type="Process" >
-    <id column="process_id" property="processId" jdbcType="INTEGER" />
-    <result column="a_id" property="aId" jdbcType="INTEGER" />
-    <result column="process_deal_u_id" property="processDealUId" jdbcType="INTEGER" />
-    <result column="process_next_u_id" property="processNextUId" jdbcType="INTEGER" />
-    <result column="process_state" property="processState" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    process_id, a_id, process_deal_u_id, process_next_u_id, process_state
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from process
-    where process_id = #{processId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from process
-    where process_id = #{processId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="Process" >
-    insert into process (process_id, a_id, process_deal_u_id, 
-      process_next_u_id, process_state)
-    values (#{processId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER}, #{processDealUId,jdbcType=INTEGER}, 
-      #{processNextUId,jdbcType=INTEGER}, #{processState,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="Process" >
-    insert into process
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="processId != null" >
-        process_id,
-      </if>
-      <if test="aId != null" >
-        a_id,
-      </if>
-      <if test="processDealUId != null" >
-        process_deal_u_id,
-      </if>
-      <if test="processNextUId != null" >
-        process_next_u_id,
-      </if>
-      <if test="processState != null" >
-        process_state,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="processId != null" >
-        #{processId,jdbcType=INTEGER},
-      </if>
-      <if test="aId != null" >
-        #{aId,jdbcType=INTEGER},
-      </if>
-      <if test="processDealUId != null" >
-        #{processDealUId,jdbcType=INTEGER},
-      </if>
-      <if test="processNextUId != null" >
-        #{processNextUId,jdbcType=INTEGER},
-      </if>
-      <if test="processState != null" >
-        #{processState,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="Process" >
-    update process
-    <set >
-      <if test="aId != null" >
-        a_id = #{aId,jdbcType=INTEGER},
-      </if>
-      <if test="processDealUId != null" >
-        process_deal_u_id = #{processDealUId,jdbcType=INTEGER},
-      </if>
-      <if test="processNextUId != null" >
-        process_next_u_id = #{processNextUId,jdbcType=INTEGER},
-      </if>
-      <if test="processState != null" >
-        process_state = #{processState,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where process_id = #{processId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="Process" >
-    update process
-    set a_id = #{aId,jdbcType=INTEGER},
-      process_deal_u_id = #{processDealUId,jdbcType=INTEGER},
-      process_next_u_id = #{processNextUId,jdbcType=INTEGER},
-      process_state = #{processState,jdbcType=VARCHAR}
-    where process_id = #{processId,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.dao.ProcessMapper">
+	<resultMap id="BaseResultMap" type="Process">
+		<id column="process_id" property="processId" jdbcType="INTEGER" />
+		<result column="a_id" property="aId" jdbcType="INTEGER" />
+		<result column="process_deal_u_id" property="processDealUId"
+			jdbcType="INTEGER" />
+		<result column="process_next_u_id" property="processNextUId"
+			jdbcType="INTEGER" />
+		<result column="process_state" property="processState"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		process_id, a_id, process_deal_u_id, process_next_u_id, process_state
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from process
+		where process_id = #{processId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from process
+		where process_id = #{processId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="Process">
+		insert into process (process_id, a_id, process_deal_u_id,
+		process_next_u_id, process_state)
+		values (#{processId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER},
+		#{processDealUId,jdbcType=INTEGER},
+		#{processNextUId,jdbcType=INTEGER}, #{processState,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="Process">
+		insert into process
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="processId != null">
+				process_id,
+			</if>
+			<if test="aId != null">
+				a_id,
+			</if>
+			<if test="processDealUId != null">
+				process_deal_u_id,
+			</if>
+			<if test="processNextUId != null">
+				process_next_u_id,
+			</if>
+			<if test="processState != null">
+				process_state,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="processId != null">
+				#{processId,jdbcType=INTEGER},
+			</if>
+			<if test="aId != null">
+				#{aId,jdbcType=INTEGER},
+			</if>
+			<if test="processDealUId != null">
+				#{processDealUId,jdbcType=INTEGER},
+			</if>
+			<if test="processNextUId != null">
+				#{processNextUId,jdbcType=INTEGER},
+			</if>
+			<if test="processState != null">
+				#{processState,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="Process">
+		update process
+		<set>
+			<if test="aId != null">
+				a_id = #{aId,jdbcType=INTEGER},
+			</if>
+			<if test="processDealUId != null">
+				process_deal_u_id = #{processDealUId,jdbcType=INTEGER},
+			</if>
+			<if test="processNextUId != null">
+				process_next_u_id = #{processNextUId,jdbcType=INTEGER},
+			</if>
+			<if test="processState != null">
+				process_state = #{processState,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where process_id = #{processId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="Process">
+		update process
+		set a_id = #{aId,jdbcType=INTEGER},
+		process_deal_u_id = #{processDealUId,jdbcType=INTEGER},
+		process_next_u_id = #{processNextUId,jdbcType=INTEGER},
+		process_state = #{processState,jdbcType=VARCHAR}
+		where process_id = #{processId,jdbcType=INTEGER}
+	</update>
 </mapper>

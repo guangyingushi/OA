@@ -1,117 +1,119 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.NoteMapper" >
-  <resultMap id="BaseResultMap" type="Note" >
-    <id column="n_id" property="nId" jdbcType="INTEGER" />
-    <result column="u_id" property="uId" jdbcType="INTEGER" />
-    <result column="n_title" property="nTitle" jdbcType="VARCHAR" />
-    <result column="n_content" property="nContent" jdbcType="VARCHAR" />
-    <result column="n_deal_time" property="nDealTime" jdbcType="TIMESTAMP" />
-    <result column="n_update_time" property="nUpdateTime" jdbcType="TIMESTAMP" />
-    <result column="n_create_time" property="nCreateTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    n_id, u_id, n_title, n_content, n_deal_time, n_update_time, n_create_time
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from note
-    where n_id = #{nId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from note
-    where n_id = #{nId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="Note" >
-    insert into note (n_id, u_id, n_title, 
-      n_content, n_deal_time, n_update_time, 
-      n_create_time)
-    values (#{nId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{nTitle,jdbcType=VARCHAR}, 
-      #{nContent,jdbcType=VARCHAR}, #{nDealTime,jdbcType=TIMESTAMP}, #{nUpdateTime,jdbcType=TIMESTAMP}, 
-      #{nCreateTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="Note" >
-    insert into note
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="nId != null" >
-        n_id,
-      </if>
-      <if test="uId != null" >
-        u_id,
-      </if>
-      <if test="nTitle != null" >
-        n_title,
-      </if>
-      <if test="nContent != null" >
-        n_content,
-      </if>
-      <if test="nDealTime != null" >
-        n_deal_time,
-      </if>
-      <if test="nUpdateTime != null" >
-        n_update_time,
-      </if>
-      <if test="nCreateTime != null" >
-        n_create_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="nId != null" >
-        #{nId,jdbcType=INTEGER},
-      </if>
-      <if test="uId != null" >
-        #{uId,jdbcType=INTEGER},
-      </if>
-      <if test="nTitle != null" >
-        #{nTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="nContent != null" >
-        #{nContent,jdbcType=VARCHAR},
-      </if>
-      <if test="nDealTime != null" >
-        #{nDealTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nUpdateTime != null" >
-        #{nUpdateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nCreateTime != null" >
-        #{nCreateTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="Note" >
-    update note
-    <set >
-      <if test="uId != null" >
-        u_id = #{uId,jdbcType=INTEGER},
-      </if>
-      <if test="nTitle != null" >
-        n_title = #{nTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="nContent != null" >
-        n_content = #{nContent,jdbcType=VARCHAR},
-      </if>
-      <if test="nDealTime != null" >
-        n_deal_time = #{nDealTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nUpdateTime != null" >
-        n_update_time = #{nUpdateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nCreateTime != null" >
-        n_create_time = #{nCreateTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where n_id = #{nId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="Note" >
-    update note
-    set u_id = #{uId,jdbcType=INTEGER},
-      n_title = #{nTitle,jdbcType=VARCHAR},
-      n_content = #{nContent,jdbcType=VARCHAR},
-      n_deal_time = #{nDealTime,jdbcType=TIMESTAMP},
-      n_update_time = #{nUpdateTime,jdbcType=TIMESTAMP},
-      n_create_time = #{nCreateTime,jdbcType=TIMESTAMP}
-    where n_id = #{nId,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.dao.NoteMapper">
+	<resultMap id="BaseResultMap" type="Note">
+		<id column="n_id" property="nId" jdbcType="INTEGER" />
+		<result column="u_id" property="uId" jdbcType="INTEGER" />
+		<result column="n_title" property="nTitle" jdbcType="VARCHAR" />
+		<result column="n_content" property="nContent" jdbcType="VARCHAR" />
+		<result column="n_deal_time" property="nDealTime" jdbcType="TIMESTAMP" />
+		<result column="n_update_time" property="nUpdateTime" jdbcType="TIMESTAMP" />
+		<result column="n_create_time" property="nCreateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		n_id, u_id, n_title, n_content, n_deal_time, n_update_time, n_create_time
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from note
+		where n_id = #{nId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from note
+		where n_id = #{nId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="Note">
+		insert into note (n_id, u_id, n_title,
+		n_content, n_deal_time, n_update_time,
+		n_create_time)
+		values (#{nId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER},
+		#{nTitle,jdbcType=VARCHAR},
+		#{nContent,jdbcType=VARCHAR}, #{nDealTime,jdbcType=TIMESTAMP}, #{nUpdateTime,jdbcType=TIMESTAMP},
+		#{nCreateTime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="Note">
+		insert into note
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="nId != null">
+				n_id,
+			</if>
+			<if test="uId != null">
+				u_id,
+			</if>
+			<if test="nTitle != null">
+				n_title,
+			</if>
+			<if test="nContent != null">
+				n_content,
+			</if>
+			<if test="nDealTime != null">
+				n_deal_time,
+			</if>
+			<if test="nUpdateTime != null">
+				n_update_time,
+			</if>
+			<if test="nCreateTime != null">
+				n_create_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="nId != null">
+				#{nId,jdbcType=INTEGER},
+			</if>
+			<if test="uId != null">
+				#{uId,jdbcType=INTEGER},
+			</if>
+			<if test="nTitle != null">
+				#{nTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="nContent != null">
+				#{nContent,jdbcType=VARCHAR},
+			</if>
+			<if test="nDealTime != null">
+				#{nDealTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="nUpdateTime != null">
+				#{nUpdateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="nCreateTime != null">
+				#{nCreateTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="Note">
+		update note
+		<set>
+			<if test="uId != null">
+				u_id = #{uId,jdbcType=INTEGER},
+			</if>
+			<if test="nTitle != null">
+				n_title = #{nTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="nContent != null">
+				n_content = #{nContent,jdbcType=VARCHAR},
+			</if>
+			<if test="nDealTime != null">
+				n_deal_time = #{nDealTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="nUpdateTime != null">
+				n_update_time = #{nUpdateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="nCreateTime != null">
+				n_create_time = #{nCreateTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where n_id = #{nId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="Note">
+		update note
+		set u_id = #{uId,jdbcType=INTEGER},
+		n_title = #{nTitle,jdbcType=VARCHAR},
+		n_content = #{nContent,jdbcType=VARCHAR},
+		n_deal_time = #{nDealTime,jdbcType=TIMESTAMP},
+		n_update_time = #{nUpdateTime,jdbcType=TIMESTAMP},
+		n_create_time = #{nCreateTime,jdbcType=TIMESTAMP}
+		where n_id = #{nId,jdbcType=INTEGER}
+	</update>
 </mapper>
