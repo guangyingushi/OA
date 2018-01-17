@@ -8,9 +8,7 @@
 </head>
 <body>
 <!-- ============================================================底部内容================================================== -->
-  <!-- /.content-wrapper -->
-
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
@@ -133,7 +131,9 @@
 
       </div>
       <!-- /.tab-pane -->
-
+      <!-- Stats tab content -->
+      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+      <!-- /.tab-pane -->
       <!-- Settings tab content -->
       <div class="tab-pane" id="control-sidebar-settings-tab">
         <form method="post">
@@ -209,7 +209,6 @@
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-
 </div>
 
 <!-- jQuery 3 -->
