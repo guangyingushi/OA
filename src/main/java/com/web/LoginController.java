@@ -70,4 +70,28 @@ public class LoginController {
 		System.out.println("我触发了");
 		return "login";
 	}
+	
+	/**
+	 *  跳转假期查询 
+	 */
+	@RequestMapping("chartjs.html")
+	public  String  gochartjs(){
+		System.out.println("我去!");
+		return "charts/chartjs";
+	}
+	/**
+	 *  跳转假期申请
+	 */
+	@RequestMapping("morris.html")
+	public  String  gomorris(){
+		System.out.println("我去!");
+		return "charts/morris";
+	}
+	
+	
+	
+	
+	
+	
+	
 }
