@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  *
  */
 
-/*public class StaticConfig extends WebMvcConfigurerAdapter {
+public class StaticConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -18,4 +18,4 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 	}
 	
 	
-}*/
+}
