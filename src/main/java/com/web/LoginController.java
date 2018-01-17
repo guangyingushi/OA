@@ -38,7 +38,7 @@ public class LoginController {
 		if(!currentUser.isAuthenticated()){
 			currentUser.login(usernamePasswordToken);//进行认证
 		}
-	    return "index";
+	    return "home";
 	}
 	
 	/**
