@@ -3,16 +3,23 @@
 <mapper namespace="com.dao.ApplyMapper">
 	<resultMap id="BaseResultMap" type="Apply">
 		<id column="a_id" property="aId" jdbcType="INTEGER" />
-		<result column="a_type" property="aType" jdbcType="VARCHAR" />
+		<result column="t_id" property="tId" jdbcType="INTEGER" />
 		<result column="a_even" property="aEven" jdbcType="VARCHAR" />
 		<result column="a_leave_time" property="aLeaveTime" jdbcType="VARCHAR" />
 		<result column="a_create_time" property="aCreateTime" jdbcType="TIMESTAMP" />
 		<result column="a_state" property="aState" jdbcType="VARCHAR" />
 		<result column="u_id" property="uId" jdbcType="INTEGER" />
+		<result column="a_submit" property="a_submit" jdbcType="INTEGER" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		a_id, a_type, a_even, a_leave_time, a_create_time, a_state, u_id
+		a_id, t_id, a_even, a_leave_time, a_create_time, a_submit, a_state, u_id
 	</sql>
+	
+	<!-- 获取   申报表 最大id 值 -->  
+	<select id="selectApplyMaxId" resultType="Apply">
+	select max(a_id) maxaId from apply
+	</select>
+	
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select
@@ -25,12 +32,12 @@
 		where a_id = #{aId,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="Apply">
-		insert into apply (a_id, a_type, a_even,
-		a_leave_time, a_create_time, a_state,
+		insert into apply (a_id, t_id, a_even,
+		a_leave_time, a_create_time, a_state,a_submit,
 		u_id)
-		values (#{aId,jdbcType=INTEGER}, #{aType,jdbcType=VARCHAR},
+		values (#{aId,jdbcType=INTEGER}, #{tId,jdbcType=INTEGER},
 		#{aEven,jdbcType=VARCHAR},
-		#{aLeaveTime,jdbcType=VARCHAR}, #{aCreateTime,jdbcType=TIMESTAMP}, #{aState,jdbcType=VARCHAR},
+		#{aLeaveTime,jdbcType=VARCHAR}, #{aCreateTime,jdbcType=TIMESTAMP}, #{aState,jdbcType=VARCHAR},#{a_submit,jdbcType=INTEGER},
 		#{uId,jdbcType=INTEGER})
 	</insert>
 	<insert id="insertSelective" parameterType="Apply">
@@ -39,8 +46,8 @@
 			<if test="aId != null">
 				a_id,
 			</if>
-			<if test="aType != null">
-				a_type,
+			<if test="tId != null">
+				t_id,
 			</if>
 			<if test="aEven != null">
 				a_even,
@@ -54,6 +61,9 @@
 			<if test="aState != null">
 				a_state,
 			</if>
+			<if test="a_submit != null">
+				a_submit,
+			</if>
 			<if test="uId != null">
 				u_id,
 			</if>
@@ -62,8 +72,8 @@
 			<if test="aId != null">
 				#{aId,jdbcType=INTEGER},
 			</if>
-			<if test="aType != null">
-				#{aType,jdbcType=VARCHAR},
+			<if test="tId != null">
+				#{tId,jdbcType=INTEGER},
 			</if>
 			<if test="aEven != null">
 				#{aEven,jdbcType=VARCHAR},
@@ -77,6 +87,9 @@
 			<if test="aState != null">
 				#{aState,jdbcType=VARCHAR},
 			</if>
+			<if test="a_submit != null">
+				#{a_submit,jdbcType=INTEGER},
+			</if>
 			<if test="uId != null">
 				#{uId,jdbcType=INTEGER},
 			</if>
@@ -85,8 +98,8 @@
 	<update id="updateByPrimaryKeySelective" parameterType="Apply">
 		update apply
 		<set>
-			<if test="aType != null">
-				a_type = #{aType,jdbcType=VARCHAR},
+			<if test="tId != null">
+				t_id = #{tId,jdbcType=INTEGER},
 			</if>
 			<if test="aEven != null">
 				a_even = #{aEven,jdbcType=VARCHAR},
@@ -108,11 +121,12 @@
 	</update>
 	<update id="updateByPrimaryKey" parameterType="Apply">
 		update apply
-		set a_type = #{aType,jdbcType=VARCHAR},
+		set t_id = #{tId,jdbcType=INTEGER},
 		a_even = #{aEven,jdbcType=VARCHAR},
 		a_leave_time = #{aLeaveTime,jdbcType=VARCHAR},
 		a_create_time = #{aCreateTime,jdbcType=TIMESTAMP},
 		a_state = #{aState,jdbcType=VARCHAR},
+		a_submit = #{a_submit,jdbcType=INTEGER}
 		u_id = #{uId,jdbcType=INTEGER}
 		where a_id = #{aId,jdbcType=INTEGER}
 	</update>

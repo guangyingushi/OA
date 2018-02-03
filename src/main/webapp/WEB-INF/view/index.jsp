@@ -381,10 +381,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="chartjs.html"><i class="fa fa-circle-o"></i> 假期查询 </a></li>
-            <li><a href="morris.html"><i class="fa fa-circle-o"></i> 假期申请</a></li>
-            <li><a href="flot.html"><i class="fa fa-circle-o"></i> 假期审核</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+            <!-- <li><a href="#"><i class="fa fa-circle-o"></i> 假期查询 </a></li> -->
+            <li><a href="charts/show.html"><i class="fa fa-circle-o"></i> 假期申请</a></li>
+           <!-- <li><a href="flot.html"><i class="fa fa-circle-o"></i> 假期审核</a></li> -->
           </ul>
         </li>
         <li class="treeview">

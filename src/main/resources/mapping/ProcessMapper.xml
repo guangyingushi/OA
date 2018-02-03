@@ -25,7 +25,7 @@
 		delete from process
 		where process_id = #{processId,jdbcType=INTEGER}
 	</delete>
-	<insert id="insert" parameterType="Process">
+	<insert id="insertProcess" parameterType="Process">
 		insert into process (process_id, a_id, process_deal_u_id,
 		process_next_u_id, process_state)
 		values (#{processId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER},

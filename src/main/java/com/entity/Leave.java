@@ -2,20 +2,33 @@ package com.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Leave {
+	
     private Integer leaveId;
 
     private Integer uId;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date leaveStartTime;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date leaveEndTime;
 
     private String leaveContent;
 
-    private Integer tId;
+    private Integer aid;
+    
+    private Integer leaveType; //1=事假   2=病假   3=出差
 
-    public Integer getLeaveId() {
+	public Integer getLeaveType() {
+		return leaveType;
+	}
+
+	public void setLeaveType(Integer leaveType) {
+		this.leaveType = leaveType;
+	}
+
+	public Integer getLeaveId() {
         return leaveId;
     }
 
@@ -55,11 +68,13 @@ public class Leave {
         this.leaveContent = leaveContent == null ? null : leaveContent.trim();
     }
 
-    public Integer gettId() {
-        return tId;
-    }
+	public Integer getAid() {
+		return aid;
+	}
 
-    public void settId(Integer tId) {
-        this.tId = tId;
-    }
+	public void setAid(Integer aid) {
+		this.aid = aid;
+	}
+
+   
 }

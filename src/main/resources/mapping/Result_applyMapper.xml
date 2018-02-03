@@ -23,7 +23,7 @@
 		delete from result_apply
 		where r_a_id = #{rAId,jdbcType=INTEGER}
 	</delete>
-	<insert id="insert" parameterType="Result_apply">
+	<insert id="insertResApp" parameterType="Result_apply">
 		insert into result_apply (r_a_id, a_id, r__a_deal_user,
 		r_a_result, r_a_opinion, r_a_deal_time
 		)

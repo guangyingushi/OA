@@ -10,34 +10,106 @@
 			jdbcType="TIMESTAMP" />
 		<result column="leave_content" property="leaveContent"
 			jdbcType="VARCHAR" />
-		<result column="t_id" property="tId" jdbcType="INTEGER" />
+		<result column="a_id" property="aid" jdbcType="INTEGER" />
+		<result column="leave_type" property="leaveType" jdbcType="INTEGER" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		leave_id, u_id, leave_start_time, leave_end_time, leave_content, t_id
+		leave_id, u_id, leave_start_time, leave_end_time, leave_content, a_id,leave_type
 	</sql>
+	
+	<!-- 通过 a_id 按条件 修改 流程表  -->
+	<update id="updateProcessByAidSelective" parameterType="Process">
+		update process
+		<set>
+			<if test="processDealUId != null">
+				process_deal_u_id = #{processDealUId,jdbcType=INTEGER},
+			</if>
+			<if test="processNextUId != null">
+				process_next_u_id = #{processNextUId,jdbcType=INTEGER},
+			</if>
+			<if test="processState != null">
+				process_state = #{processState,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where a_id = #{aId,jdbcType=INTEGER}
+	</update>
+	<!-- 通过  user id 查询   申报表apply  id -->
+	<select id="selectApplyIdByUid" parameterType="Integer" resultType="Integer">
+	select apply.a_id
+		from apply
+		where 
+		apply.u_id = #{uid}
+		and apply.a_state = "未审核"
+	</select>
+	<!-- 通过 leave id 查询请假单信息 -->
+	<select id="selectLeaveByLid" resultType="com.entity.leave.LeaveList">
+       select 
+		`user`.u_name,dept.d_name,professional.Professional_name,`leave`.u_id,`leave`.leave_start_time,`leave`.leave_type,`leave`.leave_content
+		from `leave`,`user`,dept,professional
+		where
+		 `leave`.u_id = `user`.u_id
+		and `user`.d_id = dept.d_id
+		and `user`.Professional_id = professional.Professional_id 
+		and`leave`.leave_id = #{lid}
+	</select>
+	
+	
+	<!-- 如果是员工登陆,按 员工id查询请假单 -->
+	<select id="selectLeaveByUid" resultType="com.entity.leave.LeaveList">
+		select
+		`user`.u_name,professional.Professional_name,dept.d_name,`leave`.leave_id,`leave`.leave_start_time,`leave`.leave_type,apply.a_state
+		from 
+		`user`,dept,apply,`leave`,professional
+		WHERE 
+		`user`.d_id = dept.d_id
+		and `leave`.u_id = `user`.u_id
+		and apply.u_id = `user`.u_id
+		and `user`.u_id = `leave`.u_id
+		and `user`.Professional_id = professional.Professional_id
+		and `user`.u_id = #{uid}
+		<if test="time != null">
+		and DATE_FORMAT( `leave`.leave_start_time, '%Y-%m-%d') = #{time}
+	    </if>
+	</select>
+	<!-- 如果是经理登陆,按 员工id查询请假单 -->
+	 <select id="selectLeaveBydid" resultType="com.entity.leave.LeaveList">
+	      select `user`.u_name,professional.Professional_name,dept.d_name,`leave`.leave_id,`leave`.leave_start_time,`leave`.leave_type,apply.a_state
+			from `user`,dept,apply,`leave`,professional
+			WHERE 
+			`user`.d_id = dept.d_id
+			and `leave`.u_id = `user`.u_id
+			and apply.u_id = `user`.u_id
+			and `user`.u_id = `leave`.u_id
+			and `user`.Professional_id = professional.Professional_id
+			and dept.d_id = #{did}
+			<if test="time != null">
+			and DATE_FORMAT( `leave`.leave_start_time, '%Y-%m-%d') = #{time}
+	        </if>
+	 </select>
+	
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
-		from leave
+		from `leave`
 		where leave_id = #{leaveId,jdbcType=INTEGER}
 	</select>
+	<!-- 删除请假单内容 -->
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from leave
+		delete from `leave`
 		where leave_id = #{leaveId,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="Leave">
-		insert into leave (leave_id, u_id, leave_start_time,
-		leave_end_time, leave_content, t_id
-		)
+		insert into `leave` ( leave_id, u_id, leave_start_time,      
+		leave_end_time, leave_content, a_id, leave_type)
 		values (#{leaveId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER},
 		#{leaveStartTime,jdbcType=TIMESTAMP},
 		#{leaveEndTime,jdbcType=TIMESTAMP}, #{leaveContent,jdbcType=VARCHAR},
-		#{tId,jdbcType=INTEGER}
+		#{aid,jdbcType=INTEGER}, #{leaveType,jdbcType=INTEGER}
 		)
 	</insert>
 	<insert id="insertSelective" parameterType="Leave">
-		insert into leave
+		insert into `leave`
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="leaveId != null">
 				leave_id,
@@ -55,7 +127,10 @@
 				leave_content,
 			</if>
 			<if test="tId != null">
-				t_id,
+				a_id,
+			</if>
+			<if test="leaveType != null">
+				leave_type,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -75,12 +150,15 @@
 				#{leaveContent,jdbcType=VARCHAR},
 			</if>
 			<if test="tId != null">
-				#{tId,jdbcType=INTEGER},
+				#{aid,jdbcType=INTEGER},
+			</if>
+			<if test="leaveType != null">
+				#{leaveType,jdbcType=INTEGER},
 			</if>
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="Leave">
-		update leave
+		update `leave`
 		<set>
 			<if test="uId != null">
 				u_id = #{uId,jdbcType=INTEGER},
@@ -95,18 +173,22 @@
 				leave_content = #{leaveContent,jdbcType=VARCHAR},
 			</if>
 			<if test="tId != null">
-				t_id = #{tId,jdbcType=INTEGER},
+				a_id = #{aid,jdbcType=INTEGER},
+			</if>
+			<if test="leaveType != null">
+				leave_type = #{leaveType,jdbcType=INTEGER},
 			</if>
 		</set>
 		where leave_id = #{leaveId,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="Leave">
-		update leave
+		update `leave`
 		set u_id = #{uId,jdbcType=INTEGER},
 		leave_start_time = #{leaveStartTime,jdbcType=TIMESTAMP},
 		leave_end_time = #{leaveEndTime,jdbcType=TIMESTAMP},
 		leave_content = #{leaveContent,jdbcType=VARCHAR},
-		t_id = #{tId,jdbcType=INTEGER}
+		a_id = #{aid,jdbcType=INTEGER},
+		leave_type = #{leaveType,jdbcType=INTEGER}
 		where leave_id = #{leaveId,jdbcType=INTEGER}
 	</update>
 </mapper>

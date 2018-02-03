@@ -25,7 +25,7 @@ import org.apache.shiro.realm.Realm;
 public class ShiroConfig {
     
 	/**
-	 * shiroFilter 过滤器练配置
+	 * shiroFilter 过滤器链配置
 	 */
 	@Bean
 	public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){

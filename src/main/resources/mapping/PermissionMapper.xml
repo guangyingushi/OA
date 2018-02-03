@@ -9,6 +9,7 @@
 	<sql id="Base_Column_List">
 		permission_id, permission_name
 	</sql>
+	
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select

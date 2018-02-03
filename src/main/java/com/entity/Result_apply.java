@@ -3,17 +3,17 @@ package com.entity;
 import java.util.Date;
 
 public class Result_apply {
-    private Integer rAId;
+    private Integer rAId; //id
 
-    private Integer aId;
+    private Integer aId;// 申报表外键
 
-    private Integer rADealUser;
+    private Integer rADealUser;//审核人,处理人
 
-    private String rAResult;
+    private String rAResult;//申请结果   3=通过     4=拒绝
 
-    private String rAOpinion;
+    private String rAOpinion;//处理意见
 
-    private Date rADealTime;
+    private Date rADealTime;//处理时间
 
     public Integer getrAId() {
         return rAId;

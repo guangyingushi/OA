@@ -1,5 +1,7 @@
 package com.dao;
 
+import java.util.List;
+
 import com.entity.Professional;
 
 public interface ProfessionalMapper {
@@ -14,4 +16,8 @@ public interface ProfessionalMapper {
     int updateByPrimaryKeySelective(Professional record);
 
     int updateByPrimaryKey(Professional record);
+    /**
+     *  查找 职位表所有信息
+     */
+    List<Professional> selectAllProfessional();
 }

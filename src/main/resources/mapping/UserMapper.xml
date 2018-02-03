@@ -18,6 +18,14 @@
 		u_id, u_name, u_start_time, u_end_time, u_phone, u_sex, u_img, u_state,
 		d_id, Professional_id
 	</sql>
+	
+	<select id="selectByProfessionalId" resultMap="BaseResultMap">
+	select
+	<include refid="Base_Column_List"/>
+	from `user`
+	where Professional_id = #{pid,jdbcType=INTEGER}
+	</select>
+	
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select

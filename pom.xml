@@ -40,15 +40,9 @@
 		</dependency>
 		<!-- springboot tomcat插件，jsp jar包依赖 -->
 		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-			<version>7.0.54</version>
-		</dependency>
-		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
-		</dependency>
+			</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
@@ -89,11 +83,67 @@
 			<artifactId>ehcache-core</artifactId>
 			<version>2.5.0</version>
 		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-jdk14</artifactId>
-			<version>1.5.6</version>
+           <!-- spring热部署 -->
+        <dependency>
+		    <groupId>org.springframework.boot</groupId>
+			 <artifactId>spring-boot-devtools</artifactId>
+			 <optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>springloaded</artifactId>
+    	<version>1.2.6.RELEASE</version>
+  	  </dependency>
+	   
+        <dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
 		</dependency>
 
+
+        <dependency>
+        	<groupId>org.apache.tomcat.embed</groupId>
+        	<artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>jstl</groupId>
+        	<artifactId>jstl</artifactId>
+        	<version>1.2</version>
+        </dependency>
+        <dependency>
+        	<groupId>javax.servlet</groupId>
+        	<artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>net.mingsoft</groupId>
+        	<artifactId>shiro-freemarker-tags</artifactId>
+        	<version>0.1</version>
+        </dependency>
+        
+        
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test</artifactId>
+			<version>1.5.8.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.3.10.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+        
 	</dependencies>
 </project>

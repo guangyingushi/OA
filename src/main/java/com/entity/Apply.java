@@ -5,7 +5,7 @@ import java.util.Date;
 public class Apply {
     private Integer aId;
 
-    private String aType;
+    private Integer tId;
 
     private String aEven;
 
@@ -17,7 +17,29 @@ public class Apply {
 
     private Integer uId;
 
-    public Integer getaId() {
+    private Integer a_submit;
+    
+    private Integer maxaId;
+    
+    
+
+    public Integer getA_submit() {
+		return a_submit;
+	}
+
+	public void setA_submit(Integer a_submit) {
+		this.a_submit = a_submit;
+	}
+
+	public Integer getMaxaId() {
+		return maxaId;
+	}
+
+	public void setMaxaId(Integer maxaId) {
+		this.maxaId = maxaId;
+	}
+
+	public Integer getaId() {
         return aId;
     }
 
@@ -25,15 +47,15 @@ public class Apply {
         this.aId = aId;
     }
 
-    public String getaType() {
-        return aType;
-    }
+    public Integer gettId() {
+		return tId;
+	}
 
-    public void setaType(String aType) {
-        this.aType = aType == null ? null : aType.trim();
-    }
+	public void settId(Integer tId) {
+		this.tId = tId;
+	}
 
-    public String getaEven() {
+	public String getaEven() {
         return aEven;
     }
 

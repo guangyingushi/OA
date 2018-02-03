@@ -9,6 +9,15 @@
 	<sql id="Base_Column_List">
 		Professional_id, Professional_name
 	</sql>
+	
+	<!-- 查找 职位表所有信息 -->
+	 <select id="selectAllProfessional" resultMap="BaseResultMap">
+	 select 
+	 <include refid="Base_Column_List"></include>
+	 from professional
+	 </select>
+	
+	
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select

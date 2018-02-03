@@ -19,7 +19,7 @@ import com.service.RoleService;
 import com.service.User_roleService;
 
 @Controller
-public class LoginController {
+public class loginController {
    
 	@Autowired
 	private LoginService loginService; //用户登陆业务接口
@@ -71,27 +71,34 @@ public class LoginController {
 		return "login";
 	}
 	
+	
+	/**
+	 *  跳转假期申请
+	 
+	@RequestMapping("morris.html")
+	public  String  gomorris(){
+		System.out.println("假期审核!");
+		return "charts/morris";
+	}
+	*/
+	
+	/**
+	 *  跳转假期审核
+	 */
+	@RequestMapping("flot.html")
+	public  String  goflot(){
+		System.out.println("假期审核!");
+		return "charts/flot";
+	}
+	
+	
 	/**
 	 *  跳转假期查询 
 	 */
 	@RequestMapping("chartjs.html")
 	public  String  gochartjs(){
-		System.out.println("我去!");
+		System.out.println("我去假期查询!");
 		return "charts/chartjs";
 	}
-	/**
-	 *  跳转假期申请
-	 */
-	@RequestMapping("morris.html")
-	public  String  gomorris(){
-		System.out.println("我去!");
-		return "charts/morris";
-	}
-	
-	
-	
-	
-	
-	
 	
 }
