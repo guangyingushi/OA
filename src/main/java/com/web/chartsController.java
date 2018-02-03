@@ -100,7 +100,7 @@ public class chartsController {
 	//	}
 		// 经理身份 按  部门查询
 	//	    if(user.getProfessionalId() == 2 || user.getProfessionalId() == 3 || user.getProfessionalId() == 4) {
-			lealist = LeaveService.showLeaveByDid(3, timename);  // user.getdId() 
+			lealist = LeaveService.showLeaveByDid(3, timename);  // user.getdId()
 			System.out.println("数据测试Ing================"+lealist);
 			modelAndView.setViewName(url);
 			modelAndView.addObject("lealist",lealist);
